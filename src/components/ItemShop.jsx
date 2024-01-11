@@ -34,8 +34,8 @@ export default function ItemShop({
 						/>
 					</CardBody>
 					<CardFooter className="text-small justify-between">
-						<b className="text-sm">{item.displayName}</b>
-						<p className="text-default-500 text-sm">
+						<b className="text-sm text-white font-normal">{item.displayName}</b>
+						<p className="text-white font-bold text-sm">
 							${" "}
 							{selectedCountry === "Argentina" ? (
 								<>
