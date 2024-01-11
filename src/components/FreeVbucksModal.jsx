@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
 	Modal,
 	ModalContent,
@@ -26,7 +26,10 @@ export default function FreeVbucksModal({ isOpen, onOpenChange }) {
 
 	const handleClaim = async () => {
 		setLoading(true);
-		const res = await createDiscountCodeByInstagram(instagram);
+		const res = await createDiscountCodeByInstagram(
+			// remove @ from instagram username
+			instagram.replace("@", "").toLowerCase()
+		);
 		console.log(res);
 		if (res.error) {
 			setError(res.errorCode);

@@ -376,7 +376,7 @@ export const claimCode = async (code, instagram) => {
 		};
 	}
 
-	if (discountCode.instagram !== instagram) {
+	if (discountCode.instagram !== instagram.toLowerCase()) {
 		return {
 			error: true,
 			errorCode: "instagramDoesNotMatch",
