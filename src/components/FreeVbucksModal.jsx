@@ -28,7 +28,7 @@ export default function FreeVbucksModal({ isOpen, onOpenChange }) {
 		setLoading(true);
 		const res = await createDiscountCodeByInstagram(
 			// remove @ from instagram username
-			instagram.replace("@", "").toLowerCase()
+			instagram.replace("@", "").trim().toLowerCase()
 		);
 		console.log(res);
 		if (res.error) {
