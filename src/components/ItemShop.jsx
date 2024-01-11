@@ -29,7 +29,7 @@ export default function ItemShop({
 						<img
 							radius="lg"
 							alt={item.displayName}
-							className="w-full h-[200px] rounded-top-md object-cover"
+							className="w-full max-sm:h-[200px] rounded-top-md object-cover"
 							src={item.image}
 						/>
 					</CardBody>
