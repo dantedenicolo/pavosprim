@@ -36,6 +36,7 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 	const [errorImage, setErrorImage] = useState("");
 	const [imageURL, setImageURL] = useState(null);
 	const [loading, setLoading] = useState(false);
+	const [loadingImage, setLoadingImage] = useState(false);
 
 	useEffect(() => {
 		let unsubscribe;
@@ -110,6 +111,7 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 			return;
 		}
 		try {
+			setLoadingImage(true);
 			const task = uploadImage(file);
 			task.on(
 				"state_changed",
@@ -126,10 +128,12 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 					task.snapshot.ref.getDownloadURL().then((url) => {
 						setImageURL(url);
 						setErrorImage("");
+						setLoadingImage(false);
 					});
 				}
 			);
 		} catch (error) {
+			setLoadingImage(false);
 			console.log(error);
 		}
 	};
@@ -247,7 +251,7 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 										{selectedProductID &&
 											products.find(
 												(product) => product.id === selectedProductID
-											).category === "combos" && (
+											)?.category === "combos" && (
 												<Input
 													label="Descuento"
 													placeholder="Descuento del combo (en %)"
@@ -293,12 +297,24 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 												/>
 											</div>
 										)}
-										<Button color="secondary">
+										<Button color="secondary" isLoading={loadingImage}>
 											<label
 												htmlFor="image"
 												className="w-full cursor-pointer h-full flex justify-center items-center"
 											>
-												{imageURL ? "Cambiar imagen" : "Subir imagen"}
+												{imageURL ? (
+													"Cambiar imagen"
+												) : loadingImage ? (
+													"Subiendo imagen..."
+												) : (
+													<>
+														<FontAwesomeIcon
+															icon={faPlus}
+															className="mr-2 text-white"
+														/>
+														Subir imagen
+													</>
+												)}
 											</label>
 										</Button>
 
