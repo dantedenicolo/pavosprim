@@ -115,7 +115,6 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 				() => {
 					// when the image is uploaded, get the url and set it to imageURL and input.image
 					task.snapshot.ref.getDownloadURL().then((url) => {
-						setImageURL(url);
 						setErrorImage("");
 					});
 				}
@@ -243,14 +242,13 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 										Crear producto
 									</ModalHeader>
 									<ModalBody>
-										<Input
+										<input
 											placeholder="Imagen del producto"
-											variant="bordered"
 											type="file"
-											onChange={handleUploadImage}
-											// hidden
-											className="hidden"
 											id="image"
+											accept="image/png, image/jpeg, image/jpg"
+											className="hidden"
+											onChange={handleUploadImage}
 										/>
 										{imageURL && (
 											<div className="flex justify-center">
@@ -264,10 +262,7 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 											</div>
 										)}
 										<Button color="secondary">
-											<label
-												htmlFor="image"
-												className="flex items-center justify-center w-full h-full cursor-pointer"
-											>
+											<label htmlFor="image" className="w-full cursor-pointer">
 												{imageURL ? "Cambiar imagen" : "Subir imagen"}
 											</label>
 										</Button>
@@ -297,6 +292,13 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 												className="text-black"
 											>
 												Packs
+											</SelectItem>
+											<SelectItem
+												value="combos"
+												key="combos"
+												className="text-black"
+											>
+												Combos
 											</SelectItem>
 										</Select>
 

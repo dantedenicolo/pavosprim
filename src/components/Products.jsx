@@ -51,6 +51,11 @@ export default function Products({
 								onPress={() => handleOpenBuyModal(product)}
 							>
 								<CardBody className="overflow-visible p-0">
+									{product.category === "combos" && (
+										<div className="absolute top-0 right-0 bg-red-600 rounded-bl-md rounded-tr-md p-1 ">
+											<p className="text-white text-md font-bold">10% OFF</p>
+										</div>
+									)}
 									<img
 										radius="lg"
 										alt={product.name}
@@ -61,8 +66,10 @@ export default function Products({
 									/>
 								</CardBody>
 								<CardFooter className="text-small justify-between">
-									<b className="text-sm">{product.name}</b>
-									<p className="text-default-500 text-sm">
+									<b className="text-sm text-white font-normal">
+										{product.name}
+									</b>
+									<p className="text-white text-sm font-bold">
 										${" "}
 										{selectedCountry === "Argentina" ? (
 											<>
