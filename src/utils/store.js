@@ -51,11 +51,11 @@ export const itemPrices = [
 	},
 	{
 		itemShopPrice: 300,
-		price: 611,
+		price: 610,
 	},
 	{
 		itemShopPrice: 400,
-		price: 666,
+		price: 670,
 	},
 	{
 		itemShopPrice: 500,
@@ -63,11 +63,11 @@ export const itemPrices = [
 	},
 	{
 		itemShopPrice: 600,
-		price: 1166,
+		price: 1165,
 	},
 	{
 		itemShopPrice: 700,
-		price: 1361,
+		price: 1360,
 	},
 	{
 		itemShopPrice: 800,
@@ -75,7 +75,7 @@ export const itemPrices = [
 	},
 	{
 		itemShopPrice: 900,
-		price: 1674,
+		price: 1675,
 	},
 	{
 		itemShopPrice: 1000,
@@ -83,19 +83,19 @@ export const itemPrices = [
 	},
 	{
 		itemShopPrice: 1100,
-		price: 1884,
+		price: 1890,
 	},
 	{
 		itemShopPrice: 1200,
-		price: 1999,
+		price: 1990,
 	},
 	{
 		itemShopPrice: 1300,
-		price: 2166,
+		price: 2170,
 	},
 	{
 		itemShopPrice: 1400,
-		price: 2332,
+		price: 2330,
 	},
 	{
 		itemShopPrice: 1500,
@@ -103,7 +103,7 @@ export const itemPrices = [
 	},
 	{
 		itemShopPrice: 1600,
-		price: 2532,
+		price: 2530,
 	},
 	{
 		itemShopPrice: 1700,
@@ -115,15 +115,15 @@ export const itemPrices = [
 	},
 	{
 		itemShopPrice: 1900,
-		price: 2954,
+		price: 2955,
 	},
 	{
 		itemShopPrice: 2000,
-		price: 2999,
+		price: 3000,
 	},
 	{
 		itemShopPrice: 2100,
-		price: 3149,
+		price: 3150,
 	},
 	{
 		itemShopPrice: 2200,
@@ -131,7 +131,7 @@ export const itemPrices = [
 	},
 	{
 		itemShopPrice: 2300,
-		price: 3449,
+		price: 3450,
 	},
 	{
 		itemShopPrice: 2400,
