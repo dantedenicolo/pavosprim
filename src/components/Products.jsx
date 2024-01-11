@@ -42,7 +42,7 @@ export default function Products({
 								<img
 									radius="lg"
 									alt={product.name}
-									className="w-full max-sm:h-[200px] rounded-top-md object-cover"
+									className="w-full max-sm:h-[200px] rounded-top-md object-cover h-[277px]"
 									src={
 										allProducts?.find((p) => p.id === product.productID).image
 									}
