@@ -24,6 +24,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 	const [storeTypes, setStoreTypes] = useState([]);
 	const [selectedStoreType, setSelectedStoreType] = useState(null);
+	const [selectedCategory, setSelectedCategory] = useState(null);
 	const [products, setProducts] = useState([]);
 	const [selectedProductID, setSelectedProductID] = useState(null);
 	const [price, setPrice] = useState(null);
@@ -59,6 +60,8 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 		await createSellProduct({
 			productID: selectedProductID,
 			name: products.find((product) => product.id === selectedProductID).name,
+			category: products.find((product) => product.id === selectedProductID)
+				.category,
 			price: Number(price),
 			storeType: selectedStoreType,
 			currency: storeTypes.find(
@@ -123,12 +126,19 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 	};
 
 	const handleCreateProduct = async () => {
-		if (!productName || !regularPrice || !beloPrice || !imageURL) {
+		if (
+			!productName ||
+			!regularPrice ||
+			!beloPrice ||
+			!imageURL ||
+			!selectedCategory
+		) {
 			return;
 		}
 		setLoading(true);
 		await createProduct({
 			name: productName,
+			category: selectedCategory,
 			regularPrice: Number(regularPrice),
 			beloPrice: Number(beloPrice),
 			image: imageURL,
@@ -268,6 +278,28 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 											variant="bordered"
 											onChange={(e) => setProductName(e.target.value)}
 										/>
+										<Select
+											label="Categoria"
+											placeholder="Seleccionar categoria"
+											variant="bordered"
+											onChange={(e) => setSelectedCategory(e.target.value)}
+										>
+											<SelectItem
+												value="pavos"
+												key="pavos"
+												className="text-black"
+											>
+												Pavos
+											</SelectItem>
+											<SelectItem
+												value="packs"
+												key="packs"
+												className="text-black"
+											>
+												Packs
+											</SelectItem>
+										</Select>
+
 										<Input
 											label="Precio regular"
 											placeholder="Precio regular del producto"

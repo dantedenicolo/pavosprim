@@ -151,8 +151,8 @@ export default function Products() {
 	const sortedItems = React.useMemo(() => {
 		return [...items].sort((a, b) => {
 			// sort by name
-			const nameA = a.storeType.toLowerCase();
-			const nameB = b.storeType.toLowerCase();
+			const nameA = a.storeType?.toLowerCase();
+			const nameB = b.storeType?.toLowerCase();
 
 			if (nameA < nameB)
 				return sortDescriptor.direction === "ascending" ? -1 : 1;

@@ -16,6 +16,7 @@ export default function Products({
 		setSelectedProduct(product);
 		onOpen();
 	};
+
 	return (
 		<div className="flex flex-col items-center justify-center h-full w-full">
 			{selectedPaymentMethod.toLowerCase() === "tarjeta" && (
@@ -28,59 +29,70 @@ export default function Products({
 			)}
 			<div className="overflow-auto max-h-[680px] max-sm:max-h-[420px]">
 				<div className="grid grid-cols-2 sm:grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5 xl:gap-5 flex-wrap">
-					{products.map((product) => (
-						<Card
-							shadow="sm"
-							key={product.id}
-							isPressable
-							className={
-								"w-52 h-[330px] animate__animated animate__zoomIn animate__fast max-sm:w-44 max-sm:h-[250px]"
+					{products
+						// sort by category and price inside category
+						.sort((a, b) => {
+							if (a.category < b.category) return 1;
+							if (a.category > b.category) return -1;
+							if (a.category === b.category) {
+								if (a.price > b.price) return 1;
+								if (a.price < b.price) return -1;
 							}
-							onPress={() => handleOpenBuyModal(product)}
-						>
-							<CardBody className="overflow-visible p-0">
-								<img
-									radius="lg"
-									alt={product.name}
-									className="w-full max-sm:h-[200px] rounded-top-md object-cover h-[277px]"
-									src={
-										allProducts?.find((p) => p.id === product.productID).image
-									}
-								/>
-							</CardBody>
-							<CardFooter className="text-small justify-between">
-								<b className="text-sm">{product.name}</b>
-								<p className="text-default-500 text-sm">
-									${" "}
-									{selectedCountry === "Argentina" ? (
-										<>
-											{selectedPaymentMethod.toLowerCase() === "efectivo"
-												? product.price + 200
-												: product.price}{" "}
-											{selectedCurrency}
-										</>
-									) : selectedCountry === "Colombia" ? (
-										<>
-											{selectedPaymentMethod.toLowerCase() === "tarjeta"
-												? (product.price / 910).toFixed(2)
-												: product.price}{" "}
-										</>
-									) : selectedCountry === "Otro" ? (
-										<>
-											{selectedPaymentMethod.toLowerCase() === "tarjeta"
-												? (product.price / 910).toFixed(2)
-												: product.price}{" "}
-											USD
-										</>
-									) : (
-										<>
-											{product.price} {selectedCurrency}
-										</>
-									)}
-								</p>
-							</CardFooter>
-						</Card>
-					))}
+							return 0;
+						})
+						.map((product) => (
+							<Card
+								shadow="sm"
+								key={product.id}
+								isPressable
+								className={
+									"w-52 h-[330px] animate__animated animate__zoomIn animate__fast max-sm:w-44 max-sm:h-[250px]"
+								}
+								onPress={() => handleOpenBuyModal(product)}
+							>
+								<CardBody className="overflow-visible p-0">
+									<img
+										radius="lg"
+										alt={product.name}
+										className="w-full max-sm:h-[200px] rounded-top-md object-cover h-[277px]"
+										src={
+											allProducts?.find((p) => p.id === product.productID).image
+										}
+									/>
+								</CardBody>
+								<CardFooter className="text-small justify-between">
+									<b className="text-sm">{product.name}</b>
+									<p className="text-default-500 text-sm">
+										${" "}
+										{selectedCountry === "Argentina" ? (
+											<>
+												{selectedPaymentMethod.toLowerCase() === "efectivo"
+													? product.price + 200
+													: product.price}{" "}
+												{selectedCurrency}
+											</>
+										) : selectedCountry === "Colombia" ? (
+											<>
+												{selectedPaymentMethod.toLowerCase() === "tarjeta"
+													? (product.price / 910).toFixed(2)
+													: product.price}{" "}
+											</>
+										) : selectedCountry === "Otro" ? (
+											<>
+												{selectedPaymentMethod.toLowerCase() === "tarjeta"
+													? (product.price / 910).toFixed(2)
+													: product.price}{" "}
+												USD
+											</>
+										) : (
+											<>
+												{product.price} {selectedCurrency}
+											</>
+										)}
+									</p>
+								</CardFooter>
+							</Card>
+						))}
 				</div>
 			</div>
 			<BuyModal
