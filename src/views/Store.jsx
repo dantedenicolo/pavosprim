@@ -141,7 +141,7 @@ export default function Store() {
 						<Button
 							auto
 							rounded
-							className="absolute top-5 right-5 font-bold uppercase bg-gradient-to-tr from-purple-600 to-pink-500 text-white shadow-lg max-md:text-sm max-md:px-3 max-md:py-2"
+							className="absolute top-5 right-5 font-bold uppercase bg-gradient-to-tr from-purple-600 to-pink-500 text-white shadow-lg max-md:text-sm max-md:px-3 max-md:py-2 max-sm:text-xs"
 							onClick={onOpen}
 						>
 							Vbucks gratis

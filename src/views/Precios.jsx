@@ -73,10 +73,10 @@ export default function Precios() {
 
 	return (
 		<main className="flex flex-col items-center justify-center">
-			<h1 className="text-4xl font-bold mt-2 max-md:text-3xl">
+			<h1 className="text-4xl font-bold mt-2 max-md:text-3xl text-center">
 				Obtener precios internacionales
 			</h1>
-			<div className="mt-4 flex flex-row items-center justify-center w-full gap-4">
+			<div className="mt-4 flex flex-row items-center justify-center w-full gap-4 max-sm:p-3">
 				<Select
 					placeholder="Selecciona un país"
 					value={selectedCountry}
@@ -109,7 +109,7 @@ export default function Precios() {
 			<Button
 				color="secondary"
 				auto
-				className="dark font-semibold text-md mt-4 w-full"
+				className="dark font-semibold text-md mt-4 w-full max-sm:w-[362px]"
 				onClick={handleGetPrice}
 				isLoading={loading}
 			>

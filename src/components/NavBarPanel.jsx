@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 export default function NavBarPanel({ user, MXNARS, USDARS }) {
 	return (
-		<div className="flex flex-row-reverse items-center w-full p-5">
+		<div className="flex flex-row-reverse items-center w-full p-5 max-sm:px-3 max-sm:py-0">
 			<User
 				name={
 					<p className="font-semibold text-base text-white">{user?.username}</p>
@@ -24,7 +24,7 @@ export default function NavBarPanel({ user, MXNARS, USDARS }) {
 				avatarProps={{
 					src: user?.avatar,
 				}}
-				className="w-1/3 flex justify-end max-md:w-2/5"
+				className="w-1/3 flex justify-end max-md:w-2/5 max-sm:w-1/2"
 			/>
 			<div className="flex flex-row items-center justify-center w-1/3 gap-5 max-md:hidden">
 				<div className="flex flex-row gap-2">

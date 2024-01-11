@@ -5,7 +5,7 @@ export default function UserStatusAlert({ type, user }) {
 	return (
 		<>
 			{type === "pending" ? (
-				<div className="flex flex-col border border-yellow-500 rounded-lg p-10 w-[500px] max-md:w-[400px] max-md:p-5">
+				<div className="flex flex-col border border-yellow-500 rounded-lg p-10 w-[500px] max-md:w-[400px] max-md:p-5 max-sm:w-full max-sm:m-3">
 					<FontAwesomeIcon
 						icon={faWarning}
 						size="2x"
@@ -20,7 +20,7 @@ export default function UserStatusAlert({ type, user }) {
 					</p>
 				</div>
 			) : type === "rejected" ? (
-				<div className="flex flex-col border border-red-500 rounded-lg p-10 w-[500px] max-md:w-[400px] max-md:p-5">
+				<div className="flex flex-col border border-red-500 rounded-lg p-10 w-[500px] max-md:w-[400px] max-md:p-5 max-sm:w-full max-sm:m-3">
 					<FontAwesomeIcon
 						icon={faXmarkCircle}
 						size="2x"

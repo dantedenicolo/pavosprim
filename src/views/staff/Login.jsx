@@ -34,8 +34,8 @@ export default function Login() {
 						disableSkeleton
 					/>
 					<h1 className="text-4xl font-bold mt-2">PavosPrim Staff</h1>
-					<p className="text-xl mt-2 font-semibold">
-						Incia sesión para acceder a la sección del staff.
+					<p className="text-xl mt-2 font-semibold text-center max-md:text-sm">
+						Inicia sesión para acceder a la sección del staff.
 					</p>
 					<div className="mt-4">
 						<Button

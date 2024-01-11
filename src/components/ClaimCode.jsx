@@ -24,7 +24,7 @@ export default function ClaimCode() {
 	};
 
 	return (
-		<div className="flex flex-col items-center justify-center w-[400px]">
+		<div className="flex flex-col items-center justify-center w-[400px] max-sm:w-full max-sm:p-3">
 			{sentPetition ? (
 				<div className="flex flex-col items-center justify-center w-full">
 					{errorCode ? (

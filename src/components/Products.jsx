@@ -18,7 +18,7 @@ export default function Products({
 	};
 	return (
 		<div className="flex flex-col items-center justify-center h-full w-full">
-			<div className="overflow-auto max-h-[680px]">
+			<div className="overflow-auto max-h-[680px] max-sm:max-h-[400px]">
 				{selectedPaymentMethod.toLowerCase() === "tarjeta" && (
 					<div className="bg-purple-800 rounded-md p-5 mb-3 w-full sticky">
 						<p className="text-white text-base font-semibold text-center">
@@ -27,14 +27,14 @@ export default function Products({
 						</p>
 					</div>
 				)}
-				<div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5 xl:gap-5 flex-wrap">
+				<div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5 xl:gap-5 flex-wrap">
 					{products.map((product) => (
 						<Card
 							shadow="sm"
 							key={product.id}
 							isPressable
 							className={
-								"w-52 h-[330px] animate__animated animate__zoomIn animate__fast"
+								"w-52 h-[330px] animate__animated animate__zoomIn animate__fast "
 							}
 							onPress={() => handleOpenBuyModal(product)}
 						>

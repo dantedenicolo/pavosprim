@@ -380,12 +380,12 @@ export default function Products() {
 				<ContainerBox>
 					<Table
 						aria-label="Example table with custom cells, pagination and sorting"
-						className="dark p-5"
+						className="dark p-5 max-sm:p-2"
 						isHeaderSticky
 						bottomContent={bottomContent}
 						bottomContentPlacement="outside"
 						classNames={{
-							wrapper: "max-h-[650px]",
+							wrapper: "max-h-[650px] max-sm:max-h-[400px]",
 						}}
 						sortDescriptor={sortDescriptor}
 						topContent={topContent}
