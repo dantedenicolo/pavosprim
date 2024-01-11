@@ -21,7 +21,7 @@ export default function Login() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [user]);
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-center dark">
+		<main className="flex min-h-screen flex-col items-center justify-center dark max-sm:-mt-16">
 			{isLoading ? (
 				<Spinner color="secondary" />
 			) : (

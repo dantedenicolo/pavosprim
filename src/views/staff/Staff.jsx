@@ -63,7 +63,7 @@ export default function Staff() {
 								Historial de ventas:
 							</p>
 							<ListaVentas /> */}
-							<div className="flex flex-col items-center justify-center w-full h-full mb-14">
+							<div className="flex flex-col items-center justify-center w-full h-full sm:mb-14">
 								<ClaimCode />
 							</div>
 						</ContainerBox>

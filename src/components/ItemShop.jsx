@@ -16,20 +16,20 @@ export default function ItemShop({
 		onOpen();
 	};
 	return (
-		<div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5 xl:gap-5 flex-wrap overflow-auto max-h-[680px] max-sm:max-h-[400px] max-sm:grid-cols-1">
+		<div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5 xl:gap-5 flex-wrap overflow-auto max-h-[680px] max-sm:max-h-[420px] max-sm:grid-cols-2">
 			{itemShop.map((item) => (
 				<Card
 					shadow="sm"
 					key={item.displayName}
 					isPressable
-					className="w-52 h-[330px] animate__animated animate__zoomIn animate__fast"
+					className="w-52 h-[330px] animate__animated animate__zoomIn animate__fast max-sm:w-44 max-sm:h-[250px]"
 					onPress={() => handleOpenBuyModal(item)}
 				>
 					<CardBody className="overflow-visible p-0">
 						<img
 							radius="lg"
 							alt={item.displayName}
-							className="w-full h-[277px] rounded-top-md object-cover"
+							className="w-full h-[200px] rounded-top-md object-cover"
 							src={item.image}
 						/>
 					</CardBody>

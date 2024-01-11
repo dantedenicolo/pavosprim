@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 export default function NavBarPanel({ user, MXNARS, USDARS }) {
 	return (
-		<div className="flex flex-row-reverse items-center w-full p-5 max-sm:px-3 max-sm:py-0">
+		<div className="flex flex-row-reverse items-center w-full p-5 max-sm:px-3 max-sm:py-0 max-sm:mt-6">
 			<User
 				name={
 					<p className="font-semibold text-base text-white">{user?.username}</p>

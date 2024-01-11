@@ -19,7 +19,7 @@ function Number({ n }) {
 
 export default function Landing() {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-center dark md:w-[700px] overflow-hidden max-sm:-mt-10">
+		<main className="flex min-h-screen flex-col items-center justify-center dark md:w-[700px] overflow-hidden max-sm:-mt-32">
 			<Image
 				src="/logo.png"
 				width={125}

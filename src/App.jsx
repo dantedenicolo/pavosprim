@@ -10,18 +10,18 @@ import {
 	NotFound,
 } from "./views";
 import "animate.css";
-import { useDisclosure } from "@nextui-org/react";
-import { WelcomeModal } from "./components";
-import { useEffect } from "react";
+// import { useDisclosure } from "@nextui-org/react";
+// import { WelcomeModal } from "./components";
+// import { useEffect } from "react";
 
 function App() {
-	const { isOpen, onOpen, onOpenChange } = useDisclosure();
-	const dismissed = localStorage.getItem("dismissed");
+	// const { isOpen, onOpen, onOpenChange } = useDisclosure();
+	// const dismissed = localStorage.getItem("dismissed");
 
-	useEffect(() => {
-		if (dismissed) return;
-		onOpen();
-	}, [onOpen, dismissed]);
+	// useEffect(() => {
+	// 	if (dismissed) return;
+	// 	onOpen();
+	// }, [onOpen, dismissed]);
 
 	return (
 		<main className="dark flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gray-900">
@@ -35,7 +35,7 @@ function App() {
 				<Route path="/staff/products" element={<Products />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
-			<WelcomeModal isOpen={isOpen} onOpenChange={onOpenChange} />
+			{/* <WelcomeModal isOpen={isOpen} onOpenChange={onOpenChange} /> */}
 		</main>
 	);
 }

@@ -72,7 +72,7 @@ export default function Precios() {
 	}, [selectedCountry, selectedAmount]);
 
 	return (
-		<main className="flex flex-col items-center justify-center">
+		<main className="flex flex-col items-center justify-center max-sm:-mt-16">
 			<h1 className="text-4xl font-bold mt-2 max-md:text-3xl text-center">
 				Obtener precios internacionales
 			</h1>
