@@ -352,7 +352,7 @@ export const createDiscountCodeByInstagram = async (instagram) => {
 export const claimCode = async (code, instagram) => {
 	const discountCode = await db
 		.collection("discountCodes")
-		.where("discountCode", "==", code)
+		.where("discountCode", "==", code.toLowerCase())
 		.get()
 		.then((snapshot) => {
 			if (snapshot.empty) {
