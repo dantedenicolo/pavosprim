@@ -40,6 +40,8 @@ body {
 	background: #9455d3;
 	border-radius: 20px;
 }
-html {
-	background-color: #111827;
+
+/* disable scroll */
+body {
+	overflow: hidden;
 }
