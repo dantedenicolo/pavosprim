@@ -10,6 +10,7 @@ import {
 	NotFound,
 } from "./views";
 import "animate.css";
+
 // import { useDisclosure } from "@nextui-org/react";
 // import { WelcomeModal } from "./components";
 // import { useEffect } from "react";

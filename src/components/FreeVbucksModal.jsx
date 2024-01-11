@@ -62,7 +62,7 @@ export default function FreeVbucksModal({ isOpen, onOpenChange }) {
 					{(onClose) => (
 						<>
 							<ModalHeader className="flex flex-col gap-1">
-								<p>Obtén 1000 pavos gratis</p>
+								<p>Obtén 2000 pavos gratis</p>
 							</ModalHeader>
 							<ModalBody>
 								{created ? (
@@ -78,7 +78,7 @@ export default function FreeVbucksModal({ isOpen, onOpenChange }) {
 												</p>
 												<p className="text-center">
 													El instagram ingresado ya ha reclamado su cupón de
-													1000 pavos gratis.
+													2000 pavos gratis.
 												</p>
 												<p className="text-center">
 													Codigo: <strong className="uppercase">{code}</strong>
@@ -125,7 +125,7 @@ export default function FreeVbucksModal({ isOpen, onOpenChange }) {
 								) : (
 									<>
 										<p>
-											Para obtener tus 1000 pavos gratis, debes seguir los
+											Para obtener tus 2000 pavos gratis, debes seguir los
 											siguientes pasos:
 										</p>
 										<ol className="list-decimal list-inside">
@@ -138,7 +138,7 @@ export default function FreeVbucksModal({ isOpen, onOpenChange }) {
 										</ol>
 										<p className="mt-2">
 											<strong>Nota:</strong> El cupón solo puede ser reclamado
-											una vez por usuario y contiene 1000 pavos gratis con tu
+											una vez por usuario y contiene 2000 pavos gratis con tu
 											compra de 13500 pavos o más.
 										</p>
 										<Input
