@@ -115,9 +115,10 @@ export default function FreeVbucksModal({ isOpen, onOpenChange }) {
 													<strong className="uppercase">{code}</strong>
 												</p>
 												<p className="text-center">
-													Ten en cuenta que este cupón solo puede ser usado una
-													vez y desde el usuario de Instagram{" "}
-													<strong>@{instagram}</strong>.
+													Recuerda que para obtener tus 2000 pavos gratis, debes
+													realizar una compra de 7800 pavos o más. Este cupón
+													solo puede ser usado una vez y desde el usuario de
+													Instagram <strong>@{instagram}</strong>.
 												</p>
 											</>
 										)}
@@ -139,7 +140,7 @@ export default function FreeVbucksModal({ isOpen, onOpenChange }) {
 										<p className="mt-2">
 											<strong>Nota:</strong> El cupón solo puede ser reclamado
 											una vez por usuario y contiene 2000 pavos gratis con tu
-											compra de 13500 pavos o más.
+											compra de 7800 pavos o más.
 										</p>
 										<Input
 											autoFocus
