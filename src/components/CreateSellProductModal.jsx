@@ -25,6 +25,7 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 	const [storeTypes, setStoreTypes] = useState([]);
 	const [selectedStoreType, setSelectedStoreType] = useState(null);
 	const [selectedCategory, setSelectedCategory] = useState(null);
+	const [discount, setDiscount] = useState(null);
 	const [products, setProducts] = useState([]);
 	const [selectedProductID, setSelectedProductID] = useState(null);
 	const [price, setPrice] = useState(null);
@@ -56,12 +57,20 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 		if (!selectedProductID || !price || !selectedStoreType) {
 			return;
 		}
+		if (
+			products.find((product) => product.id === selectedProductID).category ===
+				"combos" &&
+			!discount
+		) {
+			return;
+		}
 		setLoading(true);
 		await createSellProduct({
 			productID: selectedProductID,
 			name: products.find((product) => product.id === selectedProductID).name,
 			category: products.find((product) => product.id === selectedProductID)
 				.category,
+			discount: discount ? Number(discount.replace("%", "").trim()) : null,
 			price: Number(price),
 			storeType: selectedStoreType,
 			currency: storeTypes.find(
@@ -155,6 +164,18 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 		onOpenChange();
 	};
 
+	const handleClose = () => {
+		setCreationType("sellProduct");
+		setPrice(null);
+		setSelectedStoreType(null);
+		setSelectedProductID(null);
+		setImageURL(null);
+		setProductName(null);
+		setRegularPrice(null);
+		setBeloPrice(null);
+		onOpenChange();
+	};
+
 	return (
 		<>
 			<Modal
@@ -223,9 +244,20 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 											variant="bordered"
 											onChange={(e) => setPrice(e.target.value)}
 										/>
+										{selectedProductID &&
+											products.find(
+												(product) => product.id === selectedProductID
+											).category === "combos" && (
+												<Input
+													label="Descuento"
+													placeholder="Descuento del combo (en %)"
+													variant="bordered"
+													onChange={(e) => setDiscount(e.target.value)}
+												/>
+											)}
 									</ModalBody>
 									<ModalFooter>
-										<Button color="danger" variant="flat" onPress={onClose}>
+										<Button color="danger" variant="flat" onPress={handleClose}>
 											Cancelar
 										</Button>
 										<Button
@@ -319,7 +351,7 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 										/>
 									</ModalBody>
 									<ModalFooter>
-										<Button color="danger" variant="flat" onPress={onClose}>
+										<Button color="danger" variant="flat" onPress={handleClose}>
 											Cancelar
 										</Button>
 										<Button

@@ -53,7 +53,9 @@ export default function Products({
 								<CardBody className="overflow-visible p-0">
 									{product.category === "combos" && (
 										<div className="absolute top-0 right-0 bg-red-600 rounded-bl-md rounded-tr-md p-1 ">
-											<p className="text-white text-md font-bold">10% OFF</p>
+											<p className="text-white text-md font-bold">
+												{product.discount}% OFF
+											</p>
 										</div>
 									)}
 									<img
