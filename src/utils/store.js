@@ -41,33 +41,81 @@ export const paymentMethods = [
 ];
 
 export const itemPrices = [
+	// {
+	// 	itemShopPrice: 100,
+	// 	price: 250,
+	// },
 	{
 		itemShopPrice: 200,
 		price: 500,
+	},
+	{
+		itemShopPrice: 300,
+		price: 611,
+	},
+	{
+		itemShopPrice: 400,
+		price: 666,
 	},
 	{
 		itemShopPrice: 500,
 		price: 995,
 	},
 	{
+		itemShopPrice: 600,
+		price: 1166,
+	},
+	{
+		itemShopPrice: 700,
+		price: 1361,
+	},
+	{
 		itemShopPrice: 800,
 		price: 1490,
+	},
+	{
+		itemShopPrice: 900,
+		price: 1674,
 	},
 	{
 		itemShopPrice: 1000,
 		price: 1820,
 	},
 	{
+		itemShopPrice: 1100,
+		price: 1884,
+	},
+	{
 		itemShopPrice: 1200,
 		price: 1999,
+	},
+	{
+		itemShopPrice: 1300,
+		price: 2166,
+	},
+	{
+		itemShopPrice: 1400,
+		price: 2332,
 	},
 	{
 		itemShopPrice: 1500,
 		price: 2375,
 	},
 	{
+		itemShopPrice: 1600,
+		price: 2532,
+	},
+	{
+		itemShopPrice: 1700,
+		price: 2675,
+	},
+	{
 		itemShopPrice: 1800,
 		price: 2790,
+	},
+	{
+		itemShopPrice: 1900,
+		price: 2954,
 	},
 	{
 		itemShopPrice: 2000,
