@@ -115,6 +115,7 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 				() => {
 					// when the image is uploaded, get the url and set it to imageURL and input.image
 					task.snapshot.ref.getDownloadURL().then((url) => {
+						setImageURL(url);
 						setErrorImage("");
 					});
 				}
@@ -243,7 +244,6 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 									</ModalHeader>
 									<ModalBody>
 										<input
-											placeholder="Imagen del producto"
 											type="file"
 											id="image"
 											accept="image/png, image/jpeg, image/jpg"
@@ -262,7 +262,10 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 											</div>
 										)}
 										<Button color="secondary">
-											<label htmlFor="image" className="w-full cursor-pointer">
+											<label
+												htmlFor="image"
+												className="w-full cursor-pointer h-full flex justify-center items-center"
+											>
 												{imageURL ? "Cambiar imagen" : "Subir imagen"}
 											</label>
 										</Button>
