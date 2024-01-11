@@ -392,7 +392,7 @@ export const claimCode = async (code, instagram) => {
 
 	await db
 		.collection("discountCodes")
-		.where("discountCode", "==", code)
+		.where("discountCode", "==", code.toLowerCase())
 		.get()
 		.then((snapshot) => {
 			snapshot.docs[0].ref.update({
