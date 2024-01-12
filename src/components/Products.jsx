@@ -24,7 +24,7 @@ export default function Products({
 	return (
 		<div className="flex flex-col items-center justify-center h-full w-full">
 			{selectedPaymentMethod.toLowerCase() === "tarjeta" && (
-				<div className="bg-purple-800 rounded-md p-5 w-full sticky max-sm:w-[90vw]">
+				<div className="bg-purple-800 rounded-md p-5 w-full sticky max-sm:w-[90vw] mb-3">
 					<p className="text-white text-base font-semibold text-center">
 						Todos los precios serán convertidos a tu moneda local al momento de
 						pagar.
