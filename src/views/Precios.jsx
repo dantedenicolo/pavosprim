@@ -51,6 +51,10 @@ export default function Precios() {
 			label: "Costa Rica",
 			value: "CRC",
 		},
+		{
+			label: "República Dominicana",
+			value: "DOP",
+		},
 	];
 
 	const availableAmounts = [1000, 2000, 2800, 5000, 13500];
