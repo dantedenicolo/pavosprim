@@ -50,7 +50,7 @@ export default function Landing() {
 					</p>
 				</div>
 				<div className="flex flex-col items-center justify-center w-1/3">
-					<Number n={3000} />
+					<Number n={3500} />
 					<p className="dark text-md font-semibold text-center max-md:text-sm">
 						Ventas concretadas
 					</p>

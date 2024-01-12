@@ -26,13 +26,16 @@ export default function BuyModal({
 		window.open(
 			"https://wa.me/5491124011512?text=Hola!%20quiero%20comprar%20" +
 				(item.name || item.displayName) +
-				"%20por%20$" +
-				item.price +
-				"%20" +
-				currency +
-				"%20mediante%20pago%20con%20" +
-				paymentMethod +
-				".",
+				currency !==
+				"Moneda local"
+				? "%20por%20$" +
+						item.price +
+						"%20" +
+						currency +
+						"%20mediante%20pago%20con%20" +
+						paymentMethod +
+						"."
+				: +"%20mediante%20pago%20con%20" + paymentMethod + ".",
 			"_blank"
 		);
 	};
