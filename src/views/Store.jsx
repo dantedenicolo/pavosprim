@@ -37,7 +37,7 @@ export default function Store() {
 
 	const {
 		isOpen: isOpenMonedaLocal,
-		onOpen: onOpenMonedaLocal,
+		// onOpen: onOpenMonedaLocal,
 		onOpenChange: onOpenChangeMonedaLocal,
 	} = useDisclosure();
 
