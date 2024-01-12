@@ -16,6 +16,7 @@ import ItemShop from "./ItemShop";
 import BuyModal from "./BuyModal";
 import ClaimCode from "./ClaimCode";
 import Footer from "./Footer";
+import MonedaLocalModal from "./MonedaLocalModal";
 
 export {
 	ListaVentas,
@@ -36,4 +37,5 @@ export {
 	BuyModal,
 	ClaimCode,
 	Footer,
+	MonedaLocalModal,
 };

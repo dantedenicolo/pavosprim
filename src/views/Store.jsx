@@ -7,6 +7,7 @@ import {
 	PaymentMethodSelector,
 	Products,
 	SelectedOptionsBarShop,
+	MonedaLocalModal,
 } from "../components";
 import { useEffect, useState } from "react";
 import { getProductsByStoreType, getAllProducts } from "../firebase/client";
@@ -33,6 +34,19 @@ export default function Store() {
 	const [itemShop, setItemShop] = useState([]);
 
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+	const {
+		isOpen: isOpenMonedaLocal,
+		onOpen: onOpenMonedaLocal,
+		onOpenChange: onOpenChangeMonedaLocal,
+	} = useDisclosure();
+
+	useEffect(() => {
+		if (selectedPaymentMethod === "Tarjeta") {
+			onOpenChangeMonedaLocal();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [selectedPaymentMethod]);
 
 	const [loading, setLoading] = useState(true);
 
@@ -247,6 +261,10 @@ export default function Store() {
 					)}
 				</main>
 				<FreeVbucksModal isOpen={isOpen} onOpenChange={onOpenChange} />
+				<MonedaLocalModal
+					isOpen={isOpenMonedaLocal}
+					onOpenChange={onOpenChangeMonedaLocal}
+				/>
 			</ContainerBox>
 		</>
 	);

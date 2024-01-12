@@ -68,19 +68,19 @@ export default function BuyModal({
 								<div className="flex flex-row gap-2 items-center justify-center w-full">
 									<Button
 										color="secondary"
-										className="w-1/2"
+										className="w-full"
 										onPress={handleBuyInstagram}
 									>
 										Instagram
 									</Button>
-									<Button
+									{/* <Button
 										color="success"
 										className="w-1/2"
 										isDisabled
 										// onPress={handleBuyWhatsApp}
 									>
-										WhatsApp (No disponible)
-									</Button>
+										WhatsApp
+									</Button> */}
 								</div>
 							</ModalBody>
 							<ModalFooter>
