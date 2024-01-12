@@ -16,7 +16,7 @@ export default function ItemShop({
 		onOpen();
 	};
 	return (
-		<div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5 xl:gap-5 flex-wrap overflow-auto max-h-[680px] max-sm:max-h-[420px] max-sm:grid-cols-2">
+		<div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5 xl:gap-5 flex-wrap overflow-auto max-sm:grid-cols-2">
 			{itemShop.map((item) => (
 				<Card
 					shadow="sm"

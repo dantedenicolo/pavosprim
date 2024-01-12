@@ -10,6 +10,7 @@ export default function ClaimCode() {
 	const [errorCode, setErrorCode] = useState(null);
 
 	const handleClaimCode = async () => {
+		if (!code || !instagram) return;
 		setLoading(true);
 		const res = await claimCode(code, instagram);
 		if (res.error) {

@@ -41,7 +41,6 @@ body {
 	border-radius: 20px;
 }
 
-/* disable scroll */
 body {
-	overflow: hidden;
+	background: #111827;
 }

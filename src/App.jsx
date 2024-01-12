@@ -25,7 +25,7 @@ function App() {
 	// }, [onOpen, dismissed]);
 
 	return (
-		<main className="dark flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gray-900">
+		<main className="dark flex flex-col items-center overflow-hidden bg-gray-900">
 			<Routes>
 				<Route path="/" element={<Landing />} />
 				<Route path="/tienda" element={<Store />} />

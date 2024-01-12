@@ -27,7 +27,7 @@ export default function Products({
 					</p>
 				</div>
 			)}
-			<div className="overflow-auto max-h-[680px] max-sm:max-h-[420px]">
+			<div className="overflow-auto">
 				<div className="grid grid-cols-2 sm:grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5 xl:gap-5 flex-wrap">
 					{products
 						// sort by category and price inside category

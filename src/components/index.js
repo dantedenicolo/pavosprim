@@ -15,6 +15,7 @@ import Products from "./Products";
 import ItemShop from "./ItemShop";
 import BuyModal from "./BuyModal";
 import ClaimCode from "./ClaimCode";
+import Footer from "./Footer";
 
 export {
 	ListaVentas,
@@ -34,4 +35,5 @@ export {
 	ItemShop,
 	BuyModal,
 	ClaimCode,
+	Footer,
 };

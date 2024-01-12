@@ -375,7 +375,9 @@ export default function Products() {
 	return (
 		<>
 			{isLoading ? (
-				<Spinner color="secondary" />
+				<div className="flex flex-col items-center justify-center w-full h-[100svh]">
+					<Spinner color="secondary" />
+				</div>
 			) : (
 				<ContainerBox>
 					<Table
@@ -385,7 +387,7 @@ export default function Products() {
 						bottomContent={bottomContent}
 						bottomContentPlacement="outside"
 						classNames={{
-							wrapper: "max-h-[650px] max-sm:max-h-[430px]",
+							wrapper: "max-h-[650px] max-sm:max-h-[400px]",
 						}}
 						sortDescriptor={sortDescriptor}
 						topContent={topContent}

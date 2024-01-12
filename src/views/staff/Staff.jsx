@@ -1,7 +1,7 @@
 import useUser from "../../hooks/useUser";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Spinner } from "@nextui-org/react";
+import { Button, Spinner } from "@nextui-org/react";
 
 import axios from "axios";
 import {
@@ -12,6 +12,9 @@ import {
 	NavBarPanel,
 	UserStatusAlert,
 } from "../../components";
+import { logout } from "../../firebase/client";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function Staff() {
 	const redirect = useNavigate();
@@ -47,11 +50,15 @@ export default function Staff() {
 	return (
 		<>
 			{isLoading ? (
-				<Spinner color="secondary" />
+				<div className="flex flex-col items-center justify-center w-full h-[100svh]">
+					<Spinner color="secondary" />
+				</div>
 			) : (
 				<>
 					{user?.approvalStatus !== "approved" ? (
-						<UserStatusAlert type={user?.approvalStatus} user={user} />
+						<div className="flex flex-col items-center justify-center w-full h-[100svh]">
+							<UserStatusAlert type={user?.approvalStatus} user={user} />
+						</div>
 					) : (
 						<ContainerBox>
 							<NavBarPanel user={user} MXNARS={MXNARS} USDARS={USDARS} />
@@ -63,8 +70,20 @@ export default function Staff() {
 								Historial de ventas:
 							</p>
 							<ListaVentas /> */}
-							<div className="flex flex-col items-center justify-center w-full h-full sm:mb-14">
+							<div className="flex flex-col items-center justify-center w-full h-[70svh]">
 								<ClaimCode />
+							</div>
+							{/*  botom logout button */}
+							<div className="flex flex-row items-center justify-center w-full p-3 gap-2">
+								<Button
+									color="danger"
+									auto
+									className="dark font-semibold text-sm"
+									onClick={logout}
+								>
+									<FontAwesomeIcon icon={faSignOutAlt} className="text-white" />
+									Cerrar sesión
+								</Button>
 							</div>
 						</ContainerBox>
 					)}

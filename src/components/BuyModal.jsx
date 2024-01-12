@@ -22,29 +22,29 @@ export default function BuyModal({
 		window.open("https://ig.me/m/pavosprim", "_blank");
 	};
 
-	const handleBuyWhatsApp = () => {
-		currency === "Moneda local"
-			? window.open(
-					"https://wa.me/5491124011512?text=Hola!%20quiero%20comprar%20" +
-						(item.name || item.displayName) +
-						"%20mediante%20pago%20con%20" +
-						paymentMethod +
-						"%20en%20moneda%20local.",
-					"_blank"
-			  )
-			: window.open(
-					"https://wa.me/5491124011512?text=Hola!%20quiero%20comprar%20" +
-						(item.name || item.displayName) +
-						"%20por%20$" +
-						item.price +
-						"%20" +
-						currency +
-						"%20mediante%20pago%20con%20" +
-						paymentMethod +
-						".",
-					"_blank"
-			  );
-	};
+	// const handleBuyWhatsApp = () => {
+	// 	currency === "Moneda local"
+	// 		? window.open(
+	// 				"https://wa.me/5491124011512?text=Hola!%20quiero%20comprar%20" +
+	// 					(item.name || item.displayName) +
+	// 					"%20mediante%20pago%20con%20" +
+	// 					paymentMethod +
+	// 					"%20en%20moneda%20local.",
+	// 				"_blank"
+	// 		  )
+	// 		: window.open(
+	// 				"https://wa.me/5491124011512?text=Hola!%20quiero%20comprar%20" +
+	// 					(item.name || item.displayName) +
+	// 					"%20por%20$" +
+	// 					item.price +
+	// 					"%20" +
+	// 					currency +
+	// 					"%20mediante%20pago%20con%20" +
+	// 					paymentMethod +
+	// 					".",
+	// 				"_blank"
+	// 		  );
+	// };
 
 	return (
 		<>
@@ -76,9 +76,10 @@ export default function BuyModal({
 									<Button
 										color="success"
 										className="w-1/2"
-										onPress={handleBuyWhatsApp}
+										isDisabled
+										// onPress={handleBuyWhatsApp}
 									>
-										WhatsApp
+										WhatsApp (No disponible)
 									</Button>
 								</div>
 							</ModalBody>

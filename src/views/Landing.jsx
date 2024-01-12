@@ -2,6 +2,7 @@ import { Image } from "@nextui-org/react";
 import { Button } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
+import { Footer } from "../components";
 
 function Number({ n }) {
 	const { number } = useSpring({
@@ -19,7 +20,7 @@ function Number({ n }) {
 
 export default function Landing() {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-center dark md:w-[700px] overflow-hidden max-sm:-mt-32">
+		<main className="flex h-[100svh] flex-col items-center justify-center dark md:w-[700px] md:-mt-10">
 			<Image
 				src="/logo.png"
 				width={125}
@@ -46,44 +47,30 @@ export default function Landing() {
 				<div className="flex flex-col items-center justify-center w-1/3">
 					<Number n={2} />
 					<p className="dark text-md font-semibold text-center max-md:text-sm">
-						Años en la industria
+						Años en la <br className="md:hidden" />
+						industria
 					</p>
 				</div>
 				<div className="flex flex-col items-center justify-center w-1/3">
 					<Number n={3500} />
 					<p className="dark text-md font-semibold text-center max-md:text-sm">
-						Ventas concretadas
+						Ventas <br className="md:hidden" />
+						concretadas
 					</p>
 				</div>
 				<div className="flex flex-col items-center justify-center w-1/3 text-center">
 					<Number n={1200} />
 					<p className="dark text-md font-semibold text-center max-md:text-sm">
 						Clientes <span className="max-md:hidden">en todo el mundo</span>{" "}
-						<span className="hidden max-md:inline">satisfechos</span>
+						<span className="hidden max-md:inline">
+							<br className="md:hidden" />
+							satisfechos
+						</span>
 					</p>
 				</div>
 			</div>
 			{/* footer */}
-			<div className="absolute bottom-0 w-full flex flex-col items-center justify-center bg-gray-800 h-28 text-center">
-				<p className="dark text-md font-semibold mb-1 max-md:text-sm max-md:w-3/4 max-sm:w-full">
-					&copy; 2024 PavosPrim. Todos los derechos reservados.
-				</p>
-				<p className="dark text-md font-normal text-gray-300 mb-1 max-md:text-sm max-md:w-3/4 max-sm:w-full">
-					Este sitio web no esta patrocinado, respaldado ni administrado por
-					Epic Games, Inc.
-				</p>
-				<p className="dark text-md font-normal max-md:text-sm max-md:w-3/4">
-					Sitio web desarrollado por{" "}
-					<a
-						href="https://instagram.com/dantendenicolo"
-						target="_blank"
-						rel="noreferrer"
-						className="text-purple-500"
-					>
-						Dante De Nicoló
-					</a>
-				</p>
-			</div>
+			<Footer />
 		</main>
 	);
 }

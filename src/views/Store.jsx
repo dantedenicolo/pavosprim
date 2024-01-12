@@ -161,7 +161,12 @@ export default function Store() {
 					</div>
 				)}
 				<Link to="/">
-					<Image src="/logo.png" width={100} height={100} className="mt-5" />
+					<Image
+						src="/logo.png"
+						width={100}
+						height={100}
+						className="max-md:w-[75px] max-md:h-[75px]"
+					/>
 				</Link>
 				{selectedCountry && (
 					<SelectedOptionsBarShop
