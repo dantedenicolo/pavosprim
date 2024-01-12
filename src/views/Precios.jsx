@@ -55,6 +55,10 @@ export default function Precios() {
 			label: "República Dominicana",
 			value: "DOP",
 		},
+		{
+			label: "Ecuador",
+			value: "USD",
+		},
 	];
 
 	const availableAmounts = [1000, 2000, 2800, 5000, 13500];
