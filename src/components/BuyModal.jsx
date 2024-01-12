@@ -23,7 +23,7 @@ export default function BuyModal({
 	};
 
 	const handleBuyWhatsApp = () => {
-		currency !== "Moneda local"
+		currency === "Moneda local"
 			? window.open(
 					"https://wa.me/5491124011512?text=Hola!%20quiero%20comprar%20" +
 						(item.name || item.displayName) +
