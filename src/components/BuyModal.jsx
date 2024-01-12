@@ -23,21 +23,27 @@ export default function BuyModal({
 	};
 
 	const handleBuyWhatsApp = () => {
-		window.open(
-			"https://wa.me/5491124011512?text=Hola!%20quiero%20comprar%20" +
-				(item.name || item.displayName) +
-				currency !==
-				"Moneda local"
-				? "%20por%20$" +
+		currency !== "Moneda local"
+			? window.open(
+					"https://wa.me/5491124011512?text=Hola!%20quiero%20comprar%20" +
+						(item.name || item.displayName) +
+						"%20mediante%20pago%20con%20" +
+						paymentMethod +
+						"%20en%20moneda%20local.",
+					"_blank"
+			  )
+			: window.open(
+					"https://wa.me/5491124011512?text=Hola!%20quiero%20comprar%20" +
+						(item.name || item.displayName) +
+						"%20por%20$" +
 						item.price +
 						"%20" +
 						currency +
 						"%20mediante%20pago%20con%20" +
 						paymentMethod +
-						"."
-				: +"%20mediante%20pago%20con%20" + paymentMethod + ".",
-			"_blank"
-		);
+						".",
+					"_blank"
+			  );
 	};
 
 	return (
