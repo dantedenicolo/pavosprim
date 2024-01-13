@@ -14,7 +14,12 @@ import { getProductsByStoreType, getAllProducts } from "../firebase/client";
 import { Button, Image, Spinner, useDisclosure } from "@nextui-org/react";
 import { Tabs, Tab } from "@nextui-org/react";
 import axios from "axios";
-import { paymentMethods, countries, itemPrices } from "../utils/store";
+import {
+	paymentMethods,
+	countries,
+	itemPrices,
+	itemPricesMXN,
+} from "../utils/store";
 import { Link } from "react-router-dom";
 
 export default function Store({ type }) {
@@ -38,13 +43,17 @@ export default function Store({ type }) {
 
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
+	const urlCurrency = new URLSearchParams(window.location.search).get("moneda");
+
 	useEffect(() => {
 		if (type === "fortnite") {
-			setSelectedCountry("Argentina");
-			setSelectedCurrency("ARS");
-			setSelectedPaymentMethod("Transferencia");
+			if (urlCurrency === "MXN") {
+				setSelectedCurrency("MXN");
+			} else {
+				setSelectedCurrency("ARS");
+			}
 		}
-	}, [type]);
+	}, [type, urlCurrency]);
 
 	const {
 		isOpen: isOpenMonedaLocal,
@@ -146,9 +155,14 @@ export default function Store({ type }) {
 				const itemsMapped = allItems.map((item) => {
 					return {
 						displayName: item.displayName,
-						price: itemPrices.find(
-							(price) => price.itemShopPrice === item.price.finalPrice
-						)?.price,
+						price:
+							selectedCurrency === "MXN"
+								? itemPricesMXN.find(
+										(price) => price.itemShopPrice === item.price.finalPrice
+								  )?.price
+								: itemPrices.find(
+										(price) => price.itemShopPrice === item.price.finalPrice
+								  )?.price,
 						image: item.displayAssets[0].background,
 						images: item.displayAssets.map((image) => image.background),
 						giftAllowed: item.giftAllowed,
@@ -157,7 +171,7 @@ export default function Store({ type }) {
 				});
 				setItemShop(itemsMapped);
 			});
-	}, []);
+	}, [selectedCurrency]);
 
 	useEffect(() => {
 		//save selected country, currency and payment method to local storage
@@ -255,7 +269,9 @@ export default function Store({ type }) {
 										<Tabs
 											aria-label="Method"
 											disabledKeys={
-												selectedCurrency !== "ARS" ? ["tienda"] : []
+												selectedCurrency !== "ARS" && selectedCurrency !== "MXN"
+													? ["tienda"]
+													: []
 											}
 											color="secondary"
 										>
@@ -270,7 +286,8 @@ export default function Store({ type }) {
 											</Tab>
 
 											<Tab key="tienda" title="Tienda de Fortnite">
-												{selectedCurrency === "ARS" && (
+												{(selectedCurrency === "ARS" ||
+													selectedCurrency === "MXN") && (
 													<ItemShop
 														itemShop={itemShop}
 														selectedCurrency={selectedCurrency}
@@ -281,12 +298,14 @@ export default function Store({ type }) {
 											</Tab>
 										</Tabs>
 									) : (
-										<ItemShop
-											itemShop={itemShop}
-											selectedCurrency={selectedCurrency}
-											selectedCountry={selectedCountry}
-											selectedPaymentMethod={selectedPaymentMethod}
-										/>
+										<>
+											<ItemShop
+												itemShop={itemShop}
+												selectedCurrency={selectedCurrency}
+												selectedCountry={selectedCountry}
+												selectedPaymentMethod={selectedPaymentMethod}
+											/>
+										</>
 									)}
 								</>
 							)}

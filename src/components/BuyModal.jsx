@@ -70,8 +70,8 @@ export default function BuyModal({
 								{item.displayName && (
 									<div className="w-full bg-purple-700 text-white text-left p-2 rounded-md text-sm">
 										Recorda que para comprar {item.displayName} debes tenernos
-										agregados en todas nuestras 4 cuentas de Fortnite. Nuestros
-										IDs son: <br />
+										agregados en todas nuestras 4 cuentas de Fortnite por un
+										mínimo de 48hs. Nuestros IDs son: <br />
 										<ul className="list-disc list-inside">
 											<li>
 												<b>PAVOSPRIM</b>
@@ -91,7 +91,7 @@ export default function BuyModal({
 
 								<p>
 									Para realizar la compra de {item.name || item.displayName}{" "}
-									copia el siguiente mensaje y envianoslo a nuestra cuenta de
+									copia el siguiente mensaje y envíanoslo a nuestra cuenta de
 									Instagram:
 								</p>
 								<div className=" w-full bg-[#333] text-white text-left p-3 rounded-md text-sm flex flex-row gap-1 items-center justify-between">
