@@ -27,10 +27,12 @@ export default function ItemShop({
 	};
 
 	useEffect(() => {
-		itemShop.forEach((item) => {
-			setInterval(() => {
-				let image = document.getElementById(item.id);
-				if (image) {
+		const intervalIds = [];
+
+		searchedItems.forEach((item) => {
+			let image = document.getElementById(item.id);
+			if (image) {
+				const intervalId = setInterval(() => {
 					let currentImage = image.getAttribute("src");
 					let currentIndex = item.images.indexOf(currentImage);
 					if (currentIndex === item.images.length - 1) {
@@ -38,10 +40,15 @@ export default function ItemShop({
 					} else {
 						image.setAttribute("src", item.images[currentIndex + 1]);
 					}
-				}
-			}, 3000);
+				}, 3000);
+				intervalIds.push(intervalId);
+			}
 		});
-	}, [itemShop]);
+
+		return () => {
+			intervalIds.forEach((id) => clearInterval(id));
+		};
+	}, [searchedItems]);
 
 	return (
 		<>
@@ -91,7 +98,7 @@ export default function ItemShop({
 			<div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5 xl:gap-5 flex-wrap overflow-auto max-sm:grid-cols-2">
 				{searchedItems
 					.sort((a, b) => b.price - a.price)
-					.map((item, index) => (
+					.map((item) => (
 						<Card
 							shadow="sm"
 							key={item.displayName}

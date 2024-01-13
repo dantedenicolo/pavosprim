@@ -31,7 +31,11 @@ export default function Store({ type, currencyURL }) {
 		localStorage.getItem("selectedCountry") || null
 	);
 	const [selectedCurrency, setSelectedCurrency] = useState(
-		localStorage.getItem("selectedCurrency") || null
+		currencyURL === "MXN"
+			? "MXN"
+			: currencyURL === "ARS"
+			? "ARS"
+			: localStorage.getItem("selectedCurrency") || null
 	);
 	const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(
 		localStorage.getItem("selectedPaymentMethod") || null
