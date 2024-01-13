@@ -154,6 +154,7 @@ export default function Store({ type, currencyURL }) {
 				);
 				const itemsMapped = allItems.map((item) => {
 					return {
+						id: item.mainId,
 						displayName: item.displayName,
 						price:
 							selectedCurrency === "MXN"

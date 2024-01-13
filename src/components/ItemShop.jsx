@@ -27,9 +27,9 @@ export default function ItemShop({
 	};
 
 	useEffect(() => {
-		itemShop.forEach((item, index) => {
+		itemShop.forEach((item) => {
 			setInterval(() => {
-				let image = document.getElementById(index);
+				let image = document.getElementById(item.id);
 				if (image) {
 					let currentImage = image.getAttribute("src");
 					let currentIndex = item.images.indexOf(currentImage);
@@ -106,7 +106,7 @@ export default function ItemShop({
 									alt={item.displayName}
 									className="w-full max-sm:h-[200px] h-[277px] rounded-top-md object-cover"
 									src={item.images[0]}
-									id={index}
+									id={item.id}
 								/>
 							</CardBody>
 							<CardFooter className="text-small justify-between">
