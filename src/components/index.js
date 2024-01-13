@@ -17,6 +17,8 @@ import BuyModal from "./BuyModal";
 import ClaimCode from "./ClaimCode";
 import Footer from "./Footer";
 import MonedaLocalModal from "./MonedaLocalModal";
+import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import EditSellProductModal from "./EditProductModal";
 
 export {
 	ListaVentas,
@@ -38,4 +40,6 @@ export {
 	ClaimCode,
 	Footer,
 	MonedaLocalModal,
+	ConfirmDeleteModal,
+	EditSellProductModal,
 };

@@ -22,12 +22,13 @@ import {
 	VerticalDotsIcon,
 } from "../../icons";
 import { capitalize } from "../../utils/utils";
-import { ContainerBox, CreateSellProductModal } from "../../components";
 import {
-	getAllSellProducts,
-	getAllProducts,
-	deleteSellProduct,
-} from "../../firebase/client";
+	ContainerBox,
+	CreateSellProductModal,
+	ConfirmDeleteModal,
+	EditSellProductModal,
+} from "../../components";
+import { getAllSellProducts, getAllProducts } from "../../firebase/client";
 import { useDisclosure } from "@nextui-org/react";
 import { Spinner } from "@nextui-org/react";
 import { Link } from "react-router-dom";
@@ -73,9 +74,22 @@ export default function Products() {
 	const user = useUser();
 	const [isLoading, setIsLoading] = React.useState(true);
 	const [sellProducts, setSellProducts] = React.useState(["loading"]);
+	const [selectedDeleteProduct, setSelectedDeleteProduct] =
+		React.useState(null);
 	// eslint-disable-next-line no-unused-vars
 	const [products, setProducts] = React.useState([]);
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
+	const {
+		isOpen: isOpenDelete,
+		onOpen: onOpenDelete,
+		onOpenChange: onOpenChangeDelete,
+	} = useDisclosure();
+	const {
+		isOpen: isOpenEdit,
+		onOpen: onOpenEdit,
+		onOpenChange: onOpenChangeEdit,
+	} = useDisclosure();
+	const [selectedEditProduct, setSelectedEditProduct] = React.useState(null);
 	useEffect(() => {
 		let unsubscribe;
 		(async () => {
@@ -166,51 +180,64 @@ export default function Products() {
 		});
 	}, [sortDescriptor, items]);
 
-	const renderCell = React.useCallback((product, columnKey) => {
-		const cellValue = product[columnKey];
+	const renderCell = React.useCallback(
+		(product, columnKey) => {
+			const cellValue = product[columnKey];
 
-		switch (columnKey) {
-			case "name":
-				return product.name;
-			case "currency":
-				return (
-					<Chip
-						color={currencyColorMap[cellValue]}
-						className="capitalize"
-						size="mini"
-					>
-						{cellValue}
-					</Chip>
-				);
-			case "price":
-				return "$" + cellValue;
-			case "storeType":
-				return cellValue;
-			case "actions":
-				return (
-					<div className="relative flex justify-end items-center gap-2">
-						<Dropdown className="dark">
-							<DropdownTrigger>
-								<Button isIconOnly size="sm" variant="dark">
-									<VerticalDotsIcon className="text-default-300" />
-								</Button>
-							</DropdownTrigger>
-							<DropdownMenu className="dark">
-								<DropdownItem
-									onClick={() => {
-										deleteSellProduct(product.id);
-									}}
-								>
-									Eliminar
-								</DropdownItem>
-							</DropdownMenu>
-						</Dropdown>
-					</div>
-				);
-			default:
-				return cellValue;
-		}
-	}, []);
+			switch (columnKey) {
+				case "name":
+					return product.name;
+				case "currency":
+					return (
+						<Chip
+							color={currencyColorMap[cellValue]}
+							className="capitalize"
+							size="mini"
+						>
+							{cellValue}
+						</Chip>
+					);
+				case "price":
+					return "$" + cellValue;
+				case "storeType":
+					return cellValue;
+				case "actions":
+					return (
+						<div className="relative flex justify-end items-center gap-2">
+							<Dropdown className="dark">
+								<DropdownTrigger>
+									<Button isIconOnly size="sm" variant="dark">
+										<VerticalDotsIcon className="text-default-300" />
+									</Button>
+								</DropdownTrigger>
+								<DropdownMenu className="dark">
+									<DropdownItem
+										onClick={() => {
+											setSelectedEditProduct(product);
+											onOpenEdit();
+										}}
+									>
+										Editar
+									</DropdownItem>
+									<DropdownItem
+										onClick={() => {
+											setSelectedDeleteProduct(product);
+											onOpenDelete();
+										}}
+									>
+										Eliminar
+									</DropdownItem>
+								</DropdownMenu>
+							</Dropdown>
+						</div>
+					);
+				default:
+					return cellValue;
+			}
+		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[]
+	);
 
 	const onNextPage = React.useCallback(() => {
 		if (page < pages) {
@@ -430,6 +457,16 @@ export default function Products() {
 					<Link to="/staff">
 						<Button color="secondary">Volver</Button>
 					</Link>
+					<ConfirmDeleteModal
+						isOpen={isOpenDelete}
+						onOpenChange={onOpenChangeDelete}
+						product={selectedDeleteProduct}
+					/>
+					<EditSellProductModal
+						isOpen={isOpenEdit}
+						onOpenChange={onOpenChangeEdit}
+						product={selectedEditProduct}
+					/>
 				</ContainerBox>
 			)}
 		</>

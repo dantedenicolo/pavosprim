@@ -178,6 +178,10 @@ export const deleteSellProduct = (id) => {
 	return db.collection("sellProducts").doc(id).delete();
 };
 
+export const editSellProduct = ({ id, product }) => {
+	return db.collection("sellProducts").doc(id).update(product);
+};
+
 export const findStoreSellsByDate = (date, cb) => {
 	return db
 		.collection("storeSells")
