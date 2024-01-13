@@ -30,7 +30,7 @@ export default function Work() {
 
 	useEffect(() => {
 		const getCurrencies = axios
-			.get("https://pavosprimapi.vercel.app/currencies")
+			.get("https://api.pavosprim.com/currencies")
 			.then((res) => {
 				setMXNARS(Number(res.data.MXNARS).toFixed(2));
 				setMXNUSD(Number(res.data.MXNUSD).toFixed(2));

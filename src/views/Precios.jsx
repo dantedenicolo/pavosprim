@@ -68,7 +68,7 @@ export default function Precios() {
 		setLoading(true);
 		setSearchedAmount(selectedAmount);
 		const res = await axios.get(
-			`https://pavosprimapi.vercel.app/prices/international?currency=${selectedCountry}&amount=${selectedAmount}`
+			`https://api.pavosprim.com/prices/international?currency=${selectedCountry}&amount=${selectedAmount}`
 		);
 		setCurrency(res.data.currency);
 		setPrice(res.data.precio);
