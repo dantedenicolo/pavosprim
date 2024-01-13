@@ -22,7 +22,7 @@ import {
 } from "../utils/store";
 import { Link } from "react-router-dom";
 
-export default function Store({ type }) {
+export default function Store({ type, currencyURL }) {
 	useEffect(() => {
 		document.title = "Tienda - PavosPrim";
 	}, []);
@@ -43,17 +43,17 @@ export default function Store({ type }) {
 
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-	const urlCurrency = new URLSearchParams(window.location.search).get("moneda");
-
 	useEffect(() => {
 		if (type === "fortnite") {
-			if (urlCurrency === "MXN") {
+			if (currencyURL === "MXN") {
 				setSelectedCurrency("MXN");
+				setSelectedPaymentMethod("Transferencia / Oxxo");
 			} else {
 				setSelectedCurrency("ARS");
+				setSelectedPaymentMethod("Transferencia / Efectivo");
 			}
 		}
-	}, [type, urlCurrency]);
+	}, [type, currencyURL]);
 
 	const {
 		isOpen: isOpenMonedaLocal,

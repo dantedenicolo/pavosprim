@@ -142,8 +142,8 @@ export default function BuyModal({
 											size="lg"
 											className={
 												copied
-													? "text-white"
-													: "hover:text-[#cccccc] cursor-pointer transition duration-300 ease-in-out"
+													? "text-white ml-2"
+													: "hover:text-[#cccccc] cursor-pointer transition duration-300 ease-in-out ml-2"
 											}
 										/>
 									</CopyToClipboard>
