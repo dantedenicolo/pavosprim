@@ -17,6 +17,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default function Staff() {
+	useEffect(() => {
+		document.title = "Staff - PavosPrim";
+	}, []);
+
 	const redirect = useNavigate();
 	const user = useUser();
 	const [isLoading, setIsLoading] = useState(true);

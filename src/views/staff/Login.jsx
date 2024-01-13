@@ -8,6 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { Spinner } from "@nextui-org/react";
 
 export default function Login() {
+	useEffect(() => {
+		document.title = "Iniciar sesión - PavosPrim Staff";
+	}, []);
+
 	const redirect = useNavigate();
 	const user = useUser();
 	const [isLoading, setIsLoading] = useState(true);

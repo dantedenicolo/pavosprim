@@ -65,6 +65,10 @@ const INITIAL_VISIBLE_COLUMNS = [
 ];
 
 export default function Products() {
+	useEffect(() => {
+		document.title = "Productos - PavosPrim Staff";
+	}, []);
+
 	const redirect = useNavigate();
 	const user = useUser();
 	const [isLoading, setIsLoading] = React.useState(true);

@@ -17,7 +17,10 @@ import axios from "axios";
 import { paymentMethods, countries, itemPrices } from "../utils/store";
 import { Link } from "react-router-dom";
 
-export default function Store() {
+export default function Store({ type }) {
+	useEffect(() => {
+		document.title = "Tienda - PavosPrim";
+	}, []);
 	const localStorage = window.localStorage;
 	const [selectedCountry, setSelectedCountry] = useState(
 		localStorage.getItem("selectedCountry") || null
@@ -35,11 +38,26 @@ export default function Store() {
 
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
+	useEffect(() => {
+		if (type === "fortnite") {
+			setSelectedCountry("Argentina");
+			setSelectedCurrency("ARS");
+			setSelectedPaymentMethod("Transferencia");
+		}
+	}, [type]);
+
 	const {
 		isOpen: isOpenMonedaLocal,
 		// onOpen: onOpenMonedaLocal,
 		onOpenChange: onOpenChangeMonedaLocal,
 	} = useDisclosure();
+
+	useEffect(() => {
+		if (selectedPaymentMethod === "Tarjeta") {
+			onOpenChangeMonedaLocal();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [selectedPaymentMethod]);
 
 	useEffect(() => {
 		if (selectedPaymentMethod === "Tarjeta") {
@@ -182,7 +200,7 @@ export default function Store() {
 						className="max-md:w-[75px] max-md:h-[75px]"
 					/>
 				</Link>
-				{selectedCountry && (
+				{selectedCountry && type !== "fortnite" && (
 					<SelectedOptionsBarShop
 						selectedCountry={selectedCountry}
 						selectedCurrency={selectedCurrency}
@@ -231,31 +249,45 @@ export default function Store() {
 									<Spinner color="secondary" />
 								</div>
 							) : (
-								<Tabs
-									aria-label="Method"
-									disabledKeys={selectedCurrency !== "ARS" ? ["tienda"] : []}
-									color="secondary"
-								>
-									<Tab key="pavos" title="Pavos y Packs">
-										<Products
-											products={products}
+								<>
+									{type !== "fortnite" ? (
+										<Tabs
+											aria-label="Method"
+											disabledKeys={
+												selectedCurrency !== "ARS" ? ["tienda"] : []
+											}
+											color="secondary"
+										>
+											<Tab key="pavos" title="Pavos y Packs">
+												<Products
+													products={products}
+													selectedCurrency={selectedCurrency}
+													selectedCountry={selectedCountry}
+													selectedPaymentMethod={selectedPaymentMethod}
+													allProducts={allProducts}
+												/>
+											</Tab>
+
+											<Tab key="tienda" title="Tienda de Fortnite">
+												{selectedCurrency === "ARS" && (
+													<ItemShop
+														itemShop={itemShop}
+														selectedCurrency={selectedCurrency}
+														selectedCountry={selectedCountry}
+														selectedPaymentMethod={selectedPaymentMethod}
+													/>
+												)}
+											</Tab>
+										</Tabs>
+									) : (
+										<ItemShop
+											itemShop={itemShop}
 											selectedCurrency={selectedCurrency}
 											selectedCountry={selectedCountry}
 											selectedPaymentMethod={selectedPaymentMethod}
-											allProducts={allProducts}
 										/>
-									</Tab>
-									<Tab key="tienda" title="Tienda de Fortnite">
-										{selectedCurrency === "ARS" && (
-											<ItemShop
-												itemShop={itemShop}
-												selectedCurrency={selectedCurrency}
-												selectedCountry={selectedCountry}
-												selectedPaymentMethod={selectedPaymentMethod}
-											/>
-										)}
-									</Tab>
-								</Tabs>
+									)}
+								</>
 							)}
 						</>
 					)}

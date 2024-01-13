@@ -29,6 +29,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Landing />} />
 				<Route path="/tienda" element={<Store />} />
+				<Route path="/tienda/fortnite" element={<Store type="fortnite" />} />
 				<Route path="/precios" element={<Precios />} />
 				<Route path="/staff" element={<Staff />} />
 				<Route path="/staff/login" element={<Login />} />

@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Precios() {
+	useEffect(() => {
+		document.title = "Precios - PavosPrim";
+	}, []);
 	const [selectedCountry, setSelectedCountry] = useState(null);
 	const [selectedAmount, setSelectedAmount] = useState(null);
 	const [currency, setCurrency] = useState(null);

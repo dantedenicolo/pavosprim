@@ -3,6 +3,9 @@ import { Button } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 import { Footer } from "../components";
+import { useEffect } from "react";
+
+document.title = "PavosPrim";
 
 function Number({ n }) {
 	const { number } = useSpring({
@@ -19,6 +22,10 @@ function Number({ n }) {
 }
 
 export default function Landing() {
+	useEffect(() => {
+		document.title = "PavosPrim";
+	}, []);
+
 	return (
 		<main className="flex h-[100svh] flex-col items-center justify-center dark md:w-[700px] md:-mt-10">
 			<Image
