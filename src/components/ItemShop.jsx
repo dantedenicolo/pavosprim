@@ -5,7 +5,7 @@ import {
 	Input,
 	useDisclosure,
 } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BuyModal from "./BuyModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -25,6 +25,24 @@ export default function ItemShop({
 		setSelectedProduct(product);
 		onOpen();
 	};
+
+	useEffect(() => {
+		itemShop.forEach((item, index) => {
+			setInterval(() => {
+				let image = document.getElementById(index);
+				if (image) {
+					let currentImage = image.getAttribute("src");
+					let currentIndex = item.images.indexOf(currentImage);
+					if (currentIndex === item.images.length - 1) {
+						image.setAttribute("src", item.images[0]);
+					} else {
+						image.setAttribute("src", item.images[currentIndex + 1]);
+					}
+				}
+			}, 3000);
+		});
+	}, [itemShop]);
+
 	return (
 		<>
 			<div className="flex flex-row items-center justify-center w-full pb-3">
@@ -73,7 +91,7 @@ export default function ItemShop({
 			<div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4 lg:grid-cols-4 xl:grid-cols-5 xl:gap-5 flex-wrap overflow-auto max-sm:grid-cols-2">
 				{searchedItems
 					.sort((a, b) => b.price - a.price)
-					.map((item) => (
+					.map((item, index) => (
 						<Card
 							shadow="sm"
 							key={item.displayName}
@@ -82,11 +100,13 @@ export default function ItemShop({
 							onPress={() => handleOpenBuyModal(item)}
 						>
 							<CardBody className="overflow-visible p-0">
+								{/* rotating image with all item.images */}
 								<img
 									radius="lg"
 									alt={item.displayName}
 									className="w-full max-sm:h-[200px] h-[277px] rounded-top-md object-cover"
-									src={item.image}
+									src={item.images[0]}
+									id={index}
 								/>
 							</CardBody>
 							<CardFooter className="text-small justify-between">

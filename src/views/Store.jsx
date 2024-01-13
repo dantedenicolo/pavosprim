@@ -34,7 +34,7 @@ export default function Store({ type }) {
 	const [products, setProducts] = useState(null);
 	const [allProducts, setAllProducts] = useState(null);
 
-	const [itemShop, setItemShop] = useState([]);
+	const [itemShop, setItemShop] = useState(null);
 
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -150,6 +150,7 @@ export default function Store({ type }) {
 							(price) => price.itemShopPrice === item.price.finalPrice
 						)?.price,
 						image: item.displayAssets[0].background,
+						images: item.displayAssets.map((image) => image.background),
 						giftAllowed: item.giftAllowed,
 						actualDate: new Date(),
 					};
