@@ -11,7 +11,7 @@ export default function Footer() {
 			<p className="dark text-md font-normal max-md:text-sm max-md:w-3/4">
 				Sitio web desarrollado por{" "}
 				<a
-					href="https://instagram.com/dantendenicolo"
+					href="https://instagram.com/dantedenicolo"
 					target="_blank"
 					rel="noreferrer"
 					className="text-purple-500"
