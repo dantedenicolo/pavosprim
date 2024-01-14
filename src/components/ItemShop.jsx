@@ -50,6 +50,14 @@ export default function ItemShop({
 		};
 	}, [searchedItems]);
 
+	const posibleGradientColors = {
+		uncommon: "linear-gradient(135deg, #197c05 0%, #00d800 100%)",
+		rare: "linear-gradient(135deg, #044e97 0%, #00bfff 100%)",
+		epic: "linear-gradient(135deg, #5f1691 0%, #c713c7 100%)",
+		legendary: "linear-gradient(135deg, #8a4909 0%, #ffbf00 100%)",
+		other: "linear-gradient(135deg, #680e0e 0%, #ff0000 100%)",
+	};
+
 	return (
 		<>
 			<div className="flex flex-row items-center justify-center w-full pb-3">
@@ -114,6 +122,17 @@ export default function ItemShop({
 									className="w-full max-sm:h-[200px] h-[277px] rounded-top-md object-cover"
 									src={item.images[0]}
 									id={item.id}
+									style={{
+										backgroundImage: item.background
+											? `url(${item.background})`
+											: null,
+										backgroundSize: "cover",
+										backgroundPosition: "center",
+										// if no background image, make a gradient
+										background: !item.background
+											? posibleGradientColors[item.rarity.toLowerCase()]
+											: `url(${item.background})`,
+									}}
 								/>
 							</CardBody>
 							<CardFooter className="text-small justify-between">

@@ -168,10 +168,12 @@ export default function Store({ type, currencyURL }) {
 								: itemPrices.find(
 										(price) => price.itemShopPrice === item.price.finalPrice
 								  )?.price,
-						image: item.displayAssets[0].background,
-						images: item.displayAssets.map((image) => image.background),
+						image: item.displayAssets[0].url,
+						images: item.displayAssets.map((image) => image.url),
+						background: item.displayAssets[0].background_texture,
 						giftAllowed: item.giftAllowed,
 						actualDate: new Date(),
+						rarity: item.rarity.id,
 					};
 				});
 				setItemShop(itemsMapped);
