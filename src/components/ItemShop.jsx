@@ -127,7 +127,7 @@ export default function ItemShop({
 								.map((item) => item.displayName)
 								// join with commas or "y" if last item
 								.join(", ")
-								.replace(/,(?=[^,]*$)/, " y "),
+								.replace(/,(?=[^,]*$)/, " y"),
 							price: itemShop
 								.filter((item) =>
 									shoppingCart.map((cartItem) => cartItem.id).includes(item.id)

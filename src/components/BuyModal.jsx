@@ -145,8 +145,9 @@ export default function BuyModal({
 												  " en moneda local."
 												: "Hola! Quiero comprar " +
 												  (item.name || item.displayName) +
-												  (item.quantity > 1 &&
-														" (" + item.quantity + " items)") +
+												  (item?.quantity > 1
+														? " (" + item?.quantity + " items)"
+														: "") +
 												  " por $" +
 												  item.price +
 												  " " +
