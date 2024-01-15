@@ -64,7 +64,12 @@ export default function BuyModal({
 					{() => (
 						<>
 							<ModalHeader className="flex flex-col gap-1">
-								Comprar {item.name || item.displayName}
+								Comprar{" "}
+								{item?.id === "cart"
+									? item?.quantity > 1
+										? item?.quantity + " items" + " en el carrito"
+										: item?.quantity + " item" + " en el carrito"
+									: item.name || item.displayName}
 							</ModalHeader>
 							<ModalBody>
 								{item.displayName && (
@@ -99,11 +104,17 @@ export default function BuyModal({
 										{currency === "Moneda local"
 											? "Hola! Quiero comprar " +
 											  (item.name || item.displayName) +
+											  (item?.quantity > 1
+													? " (" + item?.quantity + " items)"
+													: "") +
 											  " mediante pago con " +
 											  paymentMethod +
 											  " en moneda local."
 											: "Hola! Quiero comprar " +
 											  (item.name || item.displayName) +
+											  (item?.quantity > 1
+													? " (" + item?.quantity + " items)"
+													: "") +
 											  " por $" +
 											  item.price +
 											  " " +
@@ -117,11 +128,16 @@ export default function BuyModal({
 											currency === "Moneda local"
 												? "Hola! Quiero comprar " +
 												  (item.name || item.displayName) +
+												  (item?.quantity > 1
+														? " (" + item?.quantity + " items)"
+														: "") +
 												  " mediante pago con " +
 												  paymentMethod +
 												  " en moneda local."
 												: "Hola! Quiero comprar " +
 												  (item.name || item.displayName) +
+												  (item.quantity > 1 &&
+														" (" + item.quantity + " items)") +
 												  " por $" +
 												  item.price +
 												  " " +
