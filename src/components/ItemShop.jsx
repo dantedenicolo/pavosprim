@@ -124,7 +124,9 @@ export default function ItemShop({
 						setSelectedProduct({
 							displayName: shoppingCart
 								.map((item) => item.displayName)
-								.join(", "),
+								// join with commas or "y" if last item
+								.join(", ")
+								.replace(/,(?=[^,]*$)/, " y "),
 							price: itemShop
 								.filter((item) =>
 									shoppingCart.map((cartItem) => cartItem.id).includes(item.id)

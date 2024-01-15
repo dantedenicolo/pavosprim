@@ -95,7 +95,8 @@ export default function BuyModal({
 								)}
 
 								<p>
-									Para realizar la compra de {item.name || item.displayName}{" "}
+									Para realizar la compra de {item.name || item.displayName}
+									{", "}
 									copia el siguiente mensaje y envíanoslo a nuestra cuenta de
 									Instagram:
 								</p>
