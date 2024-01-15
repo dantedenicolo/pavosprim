@@ -121,6 +121,7 @@ export default function ItemShop({
 					color="secondary"
 					className="ml-2"
 					onClick={() => {
+						if (shoppingCart.length === 0) return;
 						setSelectedProduct({
 							displayName: shoppingCart
 								.map((item) => item.displayName)
@@ -265,6 +266,9 @@ export default function ItemShop({
 					item={selectedProduct}
 					currency={selectedCurrency}
 					paymentMethod={selectedPaymentMethod}
+					addToCart={addToCart}
+					shoppingCart={shoppingCart}
+					removeFromCart={removeFromCart}
 				/>
 			</div>
 		</>

@@ -7,7 +7,12 @@ import {
 	Button,
 } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCopy, faCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+	faCopy,
+	faCheck,
+	faCartPlus,
+	faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 
@@ -17,6 +22,9 @@ export default function BuyModal({
 	item,
 	currency,
 	paymentMethod,
+	addToCart,
+	shoppingCart,
+	removeFromCart,
 }) {
 	const handleDismiss = () => {
 		onOpenChange();
@@ -185,9 +193,36 @@ export default function BuyModal({
 								</div>
 							</ModalBody>
 							<ModalFooter>
-								<Button color="secondary" onPress={handleDismiss}>
-									Cerrar
-								</Button>
+								<div className="flex flex-row-reverse gap-2 items-center w-full justify-between">
+									<Button color="secondary" onPress={handleDismiss}>
+										Cerrar
+									</Button>
+									{item?.id !== "cart" && (
+										<>
+											{!shoppingCart.find((i) => i.id === item.id) ? (
+												<Button
+													color="secondary"
+													onClick={() => {
+														addToCart(item);
+														onOpenChange();
+													}}
+												>
+													<FontAwesomeIcon icon={faCartPlus} />
+												</Button>
+											) : (
+												<Button
+													color="secondary"
+													onClick={() => {
+														removeFromCart(item);
+														onOpenChange();
+													}}
+												>
+													<FontAwesomeIcon icon={faTrash} />
+												</Button>
+											)}
+										</>
+									)}
+								</div>
 							</ModalFooter>
 						</>
 					)}
