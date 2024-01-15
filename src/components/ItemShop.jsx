@@ -135,6 +135,14 @@ export default function ItemShop({
 											: `url(${item.background})`,
 									}}
 								/>
+								{item.firstReleaseDate ===
+									// if equal to today (format yyyy-mm-dd (new item)
+
+									new Date().toLocaleDateString("en-CA") && (
+									<div className="absolute top-0 right-0 bg-yellow-400 text-black text-md font-bold px-1 rounded-tr-md rounded-bl-md max-md:text-sm">
+										Nuevo
+									</div>
+								)}
 							</CardBody>
 							<CardFooter className="text-small justify-between">
 								<b className="text-sm text-white font-normal">

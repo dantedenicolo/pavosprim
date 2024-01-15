@@ -174,6 +174,7 @@ export default function Store({ type, currencyURL }) {
 						giftAllowed: item.giftAllowed,
 						actualDate: new Date(),
 						rarity: item.rarity.id,
+						firstReleaseDate: item.firstReleaseDate,
 					};
 				});
 				setItemShop(itemsMapped);
