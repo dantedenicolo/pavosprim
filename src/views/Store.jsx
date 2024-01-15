@@ -182,23 +182,30 @@ export default function Store({ type, currencyURL }) {
 	}, [selectedCurrency]);
 
 	useEffect(() => {
-		//save selected country, currency and payment method to local storage
-		if (selectedCountry) {
-			localStorage.setItem("selectedCountry", selectedCountry);
-		} else {
-			localStorage.removeItem("selectedCountry");
+		if (type !== "fortnite") {
+			if (selectedCountry) {
+				localStorage.setItem("selectedCountry", selectedCountry);
+			} else {
+				localStorage.removeItem("selectedCountry");
+			}
+			if (selectedCurrency) {
+				localStorage.setItem("selectedCurrency", selectedCurrency);
+			} else {
+				localStorage.removeItem("selectedCurrency");
+			}
+			if (selectedPaymentMethod) {
+				localStorage.setItem("selectedPaymentMethod", selectedPaymentMethod);
+			} else {
+				localStorage.removeItem("selectedPaymentMethod");
+			}
 		}
-		if (selectedCurrency) {
-			localStorage.setItem("selectedCurrency", selectedCurrency);
-		} else {
-			localStorage.removeItem("selectedCurrency");
-		}
-		if (selectedPaymentMethod) {
-			localStorage.setItem("selectedPaymentMethod", selectedPaymentMethod);
-		} else {
-			localStorage.removeItem("selectedPaymentMethod");
-		}
-	}, [selectedCountry, selectedCurrency, selectedPaymentMethod, localStorage]);
+	}, [
+		selectedCountry,
+		selectedCurrency,
+		selectedPaymentMethod,
+		localStorage,
+		type,
+	]);
 
 	return (
 		<>
