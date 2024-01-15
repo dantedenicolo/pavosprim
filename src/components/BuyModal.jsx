@@ -25,6 +25,7 @@ export default function BuyModal({
 	addToCart,
 	shoppingCart,
 	removeFromCart,
+	emptyCart,
 }) {
 	const handleDismiss = () => {
 		onOpenChange();
@@ -198,7 +199,7 @@ export default function BuyModal({
 									<Button color="secondary" onPress={handleDismiss}>
 										Cerrar
 									</Button>
-									{item?.id !== "cart" && (
+									{item?.id !== "cart" ? (
 										<>
 											{!shoppingCart.find((i) => i.id === item.id) ? (
 												<Button
@@ -222,6 +223,17 @@ export default function BuyModal({
 												</Button>
 											)}
 										</>
+									) : (
+										<Button
+											color="secondary"
+											onClick={() => {
+												emptyCart();
+												onOpenChange();
+											}}
+										>
+											Vaciar carrito
+											<FontAwesomeIcon icon={faTrash} />
+										</Button>
 									)}
 								</div>
 							</ModalFooter>

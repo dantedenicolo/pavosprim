@@ -75,6 +75,10 @@ export default function ItemShop({
 		setShoppingCart(shoppingCart.filter((cartItem) => cartItem.id !== item.id));
 	};
 
+	const emptyCart = () => {
+		setShoppingCart([]);
+	};
+
 	return (
 		<>
 			<div className="flex flex-row items-center justify-center w-full pb-3">
@@ -269,6 +273,7 @@ export default function ItemShop({
 					addToCart={addToCart}
 					shoppingCart={shoppingCart}
 					removeFromCart={removeFromCart}
+					emptyCart={emptyCart}
 				/>
 			</div>
 		</>
