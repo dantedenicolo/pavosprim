@@ -216,7 +216,6 @@ export default function ItemShop({
 													? faTrash
 													: faCartPlus
 											}
-											size="md"
 											className="text-white p-2"
 										/>
 									</div>

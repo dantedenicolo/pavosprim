@@ -199,41 +199,45 @@ export default function BuyModal({
 									<Button color="secondary" onPress={handleDismiss}>
 										Cerrar
 									</Button>
-									{item?.id !== "cart" ? (
+									{item?.displayName && (
 										<>
-											{!shoppingCart.find((i) => i.id === item.id) ? (
-												<Button
-													color="secondary"
-													onClick={() => {
-														addToCart(item);
-														onOpenChange();
-													}}
-												>
-													<FontAwesomeIcon icon={faCartPlus} />
-												</Button>
+											{item?.id !== "cart" ? (
+												<>
+													{!shoppingCart.find((i) => i.id === item.id) ? (
+														<Button
+															color="secondary"
+															onClick={() => {
+																addToCart(item);
+																onOpenChange();
+															}}
+														>
+															<FontAwesomeIcon icon={faCartPlus} />
+														</Button>
+													) : (
+														<Button
+															color="secondary"
+															onClick={() => {
+																removeFromCart(item);
+																onOpenChange();
+															}}
+														>
+															<FontAwesomeIcon icon={faTrash} />
+														</Button>
+													)}
+												</>
 											) : (
 												<Button
 													color="secondary"
 													onClick={() => {
-														removeFromCart(item);
+														emptyCart();
 														onOpenChange();
 													}}
 												>
+													Vaciar carrito
 													<FontAwesomeIcon icon={faTrash} />
 												</Button>
 											)}
 										</>
-									) : (
-										<Button
-											color="secondary"
-											onClick={() => {
-												emptyCart();
-												onOpenChange();
-											}}
-										>
-											Vaciar carrito
-											<FontAwesomeIcon icon={faTrash} />
-										</Button>
 									)}
 								</div>
 							</ModalFooter>
