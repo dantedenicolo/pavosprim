@@ -212,13 +212,9 @@ export default function Store({ type, currencyURL }) {
 			<ContainerBox>
 				//{selectedCountry && selectedCurrency && selectedPaymentMethod && (
 					//<div className="relative w-full">
-					//	<Button
-							// auto
-							// rounded
-							// className="absolute top-5 right-5 font-bold uppercase bg-gradient-to-tr from-purple-600 to-pink-500 text-white shadow-lg max-md:text-sm max-md:px-3 max-md:py-2 max-sm:text-xs"
+					//	<Button auto rounded className="absolute top-5 right-5 font-bold uppercase bg-gradient-to-tr from-purple-600 to-pink-500 text-white shadow-lg max-md:text-sm max-md:px-3 max-md:py-2 max-sm:text-xs"
 							// onClick={onOpen}
-					//	>
-							// pavos gratis
+					//	> pavos gratis
 		//				</Button>
 				//	</div>
 			//	)}
