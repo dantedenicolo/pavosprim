@@ -38,7 +38,7 @@ export default function ItemShop({
 
 		searchedItems.forEach((item) => {
 			let image = document.getElementById(item.id);
-			if (image) {
+			if (image && item.images.length > 1) {
 				const intervalId = setInterval(() => {
 					let currentImage = image.getAttribute("src");
 					let currentIndex = item.images.indexOf(currentImage);
@@ -180,7 +180,7 @@ export default function ItemShop({
 									radius="lg"
 									alt={item.displayName}
 									className="w-full max-sm:h-[200px] h-[277px] rounded-top-md object-cover"
-									src={item.images[0]}
+									src={item?.images[0] || "/no-image.png"}
 									id={item.id}
 									onClick={() =>
 										handleOpenBuyModal({
