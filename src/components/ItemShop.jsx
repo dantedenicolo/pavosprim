@@ -136,7 +136,16 @@ export default function ItemShop({
 								.filter((item) =>
 									shoppingCart.map((cartItem) => cartItem.id).includes(item.id)
 								)
-								.reduce((acc, item) => acc + item.price, 0),
+								.reduce(
+									(acc, item) =>
+										acc +
+										(selectedCountry === "Argentina"
+											? selectedPaymentMethod.toLowerCase() === "efectivo"
+												? item.price + 200
+												: item.price
+											: item.price),
+									0
+								),
 							images: shoppingCart.map((item) => item.images[0]),
 							id: "cart",
 							quantity: shoppingCart.length,
@@ -173,7 +182,20 @@ export default function ItemShop({
 									className="w-full max-sm:h-[200px] h-[277px] rounded-top-md object-cover"
 									src={item.images[0]}
 									id={item.id}
-									onClick={() => handleOpenBuyModal(item)}
+									onClick={() =>
+										handleOpenBuyModal({
+											id: item.id,
+											displayName: item.displayName,
+											images: item.images,
+
+											price:
+												selectedCountry === "Argentina"
+													? selectedPaymentMethod.toLowerCase() === "efectivo"
+														? item.price + 200
+														: item.price
+													: item.price,
+										})
+									}
 									style={{
 										backgroundImage: item.background
 											? `url(${item.background})`
@@ -189,7 +211,6 @@ export default function ItemShop({
 								/>
 								{item.firstReleaseDate ===
 									// if equal to today (format yyyy-mm-dd (new item)
-
 									new Date().toLocaleDateString("en-CA") && (
 									<div className="absolute top-0 right-0 bg-yellow-400 text-black text-md font-bold px-1 rounded-bl-md max-md:text-sm">
 										Nuevo
@@ -206,7 +227,16 @@ export default function ItemShop({
 											) {
 												removeFromCart(item);
 											} else {
-												addToCart(item);
+												addToCart({
+													...item,
+													price:
+														selectedCountry === "Argentina"
+															? selectedPaymentMethod.toLowerCase() ===
+															  "efectivo"
+																? item.price + 200
+																: item.price
+															: item.price,
+												});
 											}
 										}}
 									>
@@ -223,7 +253,20 @@ export default function ItemShop({
 							</CardBody>
 							<CardFooter
 								className="text-small justify-between"
-								onClick={() => handleOpenBuyModal(item)}
+								onClick={() =>
+									handleOpenBuyModal({
+										id: item.id,
+										displayName: item.displayName,
+										images: item.images,
+
+										price:
+											selectedCountry === "Argentina"
+												? selectedPaymentMethod.toLowerCase() === "efectivo"
+													? item.price + 200
+													: item.price
+												: item.price,
+									})
+								}
 							>
 								<b className="text-sm text-white font-normal">
 									{item.displayName}

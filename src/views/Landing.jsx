@@ -59,14 +59,14 @@ export default function Landing() {
 					</p>
 				</div>
 				<div className="flex flex-col items-center justify-center w-1/3">
-					<Number n={3500} />
+					<Number n={5000} />
 					<p className="dark text-md font-semibold text-center max-md:text-sm">
 						Ventas <br className="md:hidden" />
 						concretadas
 					</p>
 				</div>
 				<div className="flex flex-col items-center justify-center w-1/3 text-center">
-					<Number n={1500} />
+					<Number n={2000} />
 					<p className="dark text-md font-semibold text-center max-md:text-sm">
 						Clientes <span className="max-md:hidden">en todo el mundo</span>{" "}
 						<span className="hidden max-md:inline">

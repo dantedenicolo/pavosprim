@@ -95,7 +95,17 @@ export default function Products({
 								className={
 									"w-52 h-[330px] animate__animated animate__zoomIn animate__fast max-sm:w-44 max-sm:h-[250px]"
 								}
-								onPress={() => handleOpenBuyModal(product)}
+								onPress={() =>
+									handleOpenBuyModal({
+										...product,
+										price:
+											selectedCountry === "Argentina"
+												? selectedPaymentMethod.toLowerCase() === "efectivo"
+													? product.price + 200
+													: product.price
+												: product.price,
+									})
+								}
 							>
 								<CardBody className="overflow-visible p-0">
 									{product.category === "combos" && (
