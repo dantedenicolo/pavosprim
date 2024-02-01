@@ -43,6 +43,7 @@ export default function Store({ type, currencyURL }) {
 	const [allProducts, setAllProducts] = useState(null);
 
 	const [itemShop, setItemShop] = useState(null);
+	const [ready, setReady] = useState(false);
 
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
@@ -74,6 +75,7 @@ export default function Store({ type, currencyURL }) {
 				setSelectedCurrency("Moneda local");
 				setSelectedPaymentMethod("Tarjeta");
 				setSelectedCountry("Otro");
+				setReady(true);
 			} else {
 				setSelectedCurrency("ARS");
 				setSelectedPaymentMethod("Transferencia / Efectivo");
@@ -89,13 +91,21 @@ export default function Store({ type, currencyURL }) {
 	} = useDisclosure();
 
 	useEffect(() => {
-		if (!type) {
-			if (selectedPaymentMethod === "Tarjeta") {
-				onOpenChangeMonedaLocal();
+		if (type !== "fortnite") {
+			if (type === "pavos") {
+				if (ready) {
+					if (selectedPaymentMethod === "Tarjeta") {
+						onOpenChangeMonedaLocal();
+					}
+				}
+			} else {
+				if (selectedPaymentMethod === "Tarjeta") {
+					onOpenChangeMonedaLocal();
+				}
 			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [type, selectedPaymentMethod]);
+	}, [type, ready, selectedPaymentMethod]);
 
 	const [loading, setLoading] = useState(true);
 
