@@ -212,7 +212,7 @@ export default function ItemShop({
 								{item.firstReleaseDate ===
 									// if equal to today (format yyyy-mm-dd (new item)
 									new Date().toLocaleDateString("en-CA") && (
-									<div className="absolute top-0 right-0 bg-yellow-400 text-black text-md font-bold px-1 rounded-bl-md max-md:text-sm">
+									<div className="absolute top-0 right-0 bg-yellow-400 text-black text-md font-bold px-1 rounded-bl-md max-md:text-sm z-50">
 										Nuevo
 									</div>
 								)}
@@ -281,21 +281,13 @@ export default function ItemShop({
 											{selectedCurrency}
 										</>
 									) : selectedCountry === "Colombia" ? (
-										<>
-											{item.price.toFixed(2)} USD
-											{selectedPaymentMethod.toLowerCase() === "tarjeta" && (
-												<p className="text-sm font-normal">Convertidos a COP</p>
-											)}
-										</>
+										<>{item.price.toFixed(2)} USD</>
 									) : selectedCountry === "Otro" ? (
 										<>
 											{selectedPaymentMethod.toLowerCase() === "tarjeta"
 												? (item.price / 910).toFixed(2)
 												: item.price}{" "}
 											USD
-											<p className="text-sm font-normal">
-												Convertidos a moneda local
-											</p>
 										</>
 									) : (
 										<>

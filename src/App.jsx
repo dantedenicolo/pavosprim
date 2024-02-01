@@ -30,6 +30,26 @@ function App() {
 				<Route path="/" element={<Landing />} />
 				<Route path="/tienda" element={<Store />} />
 				<Route
+					path="/tienda/pavos"
+					element={<Store type="pavos" currencyURL="ARS" />}
+				/>
+				<Route
+					path="/tienda/pavos/MXN"
+					element={<Store type="pavos" currencyURL="MXN" />}
+				/>
+				<Route
+					path="/tienda/pavos/ARS"
+					element={<Store type="pavos" currencyURL="ARS" />}
+				/>
+				<Route
+					path="/tienda/pavos/USD"
+					element={<Store type="pavos" currencyURL="USD" />}
+				/>
+				<Route
+					path="/tienda/pavos/GLOBAL"
+					element={<Store type="pavos" currencyURL="GLOBAL" />}
+				/>
+				<Route
 					path="/tienda/fortnite"
 					element={<Store type="fortnite" currencyURL="ARS" />}
 				/>

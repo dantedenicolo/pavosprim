@@ -48,12 +48,36 @@ export default function Store({ type, currencyURL }) {
 
 	useEffect(() => {
 		if (type === "fortnite") {
-			if (currencyURL === "MXN") {
+			if (currencyURL.toLowerCase() === "mxn") {
 				setSelectedCurrency("MXN");
 				setSelectedPaymentMethod("Transferencia / Oxxo");
+				setSelectedCountry("Mexico");
 			} else {
 				setSelectedCurrency("ARS");
 				setSelectedPaymentMethod("Transferencia / Efectivo");
+				setSelectedCountry("Argentina");
+			}
+		} else if (type === "pavos") {
+			if (currencyURL.toLowerCase() === "mxn") {
+				setSelectedCurrency("MXN");
+				setSelectedPaymentMethod("Transferencia / Oxxo");
+				setSelectedCountry("Mexico");
+			} else if (currencyURL.toLowerCase() === "ars") {
+				setSelectedCurrency("ARS");
+				setSelectedPaymentMethod("Transferencia / Efectivo");
+				setSelectedCountry("Argentina");
+			} else if (currencyURL.toLowerCase() === "usd") {
+				setSelectedCurrency("USD");
+				setSelectedPaymentMethod("DolarApp");
+				setSelectedCountry("Otro");
+			} else if (currencyURL.toLowerCase() === "global") {
+				setSelectedCurrency("Moneda local");
+				setSelectedPaymentMethod("Tarjeta");
+				setSelectedCountry("Otro");
+			} else {
+				setSelectedCurrency("ARS");
+				setSelectedPaymentMethod("Transferencia / Efectivo");
+				setSelectedCountry("Argentina");
 			}
 		}
 	}, [type, currencyURL]);
@@ -65,18 +89,13 @@ export default function Store({ type, currencyURL }) {
 	} = useDisclosure();
 
 	useEffect(() => {
-		if (selectedPaymentMethod === "Tarjeta") {
-			onOpenChangeMonedaLocal();
+		if (!type) {
+			if (selectedPaymentMethod === "Tarjeta") {
+				onOpenChangeMonedaLocal();
+			}
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [selectedPaymentMethod]);
-
-	useEffect(() => {
-		if (selectedPaymentMethod === "Tarjeta") {
-			onOpenChangeMonedaLocal();
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [selectedPaymentMethod]);
+	}, [type, selectedPaymentMethod]);
 
 	const [loading, setLoading] = useState(true);
 
@@ -181,7 +200,7 @@ export default function Store({ type, currencyURL }) {
 	}, [selectedCurrency]);
 
 	useEffect(() => {
-		if (type !== "fortnite") {
+		if (type !== "fortnite" && type !== "pavos") {
 			if (selectedCountry) {
 				localStorage.setItem("selectedCountry", selectedCountry);
 			} else {
@@ -217,7 +236,7 @@ export default function Store({ type, currencyURL }) {
 						className="max-md:w-[75px] max-md:h-[75px]"
 					/>
 				</Link>
-				{selectedCountry && type !== "fortnite" && (
+				{selectedCountry && type !== "fortnite" && type !== "pavos" && (
 					<SelectedOptionsBarShop
 						selectedCountry={selectedCountry}
 						selectedCurrency={selectedCurrency}
@@ -267,7 +286,7 @@ export default function Store({ type, currencyURL }) {
 								</div>
 							) : (
 								<>
-									{type !== "fortnite" ? (
+									{type !== "fortnite" && type !== "pavos" ? (
 										<Tabs
 											aria-label="Method"
 											disabledKeys={
@@ -299,13 +318,23 @@ export default function Store({ type, currencyURL }) {
 												)}
 											</Tab>
 										</Tabs>
-									) : (
+									) : type === "fortnite" ? (
 										<>
 											<ItemShop
 												itemShop={itemShop}
 												selectedCurrency={selectedCurrency}
 												selectedCountry={selectedCountry}
 												selectedPaymentMethod={selectedPaymentMethod}
+											/>
+										</>
+									) : (
+										<>
+											<Products
+												products={products}
+												selectedCurrency={selectedCurrency}
+												selectedCountry={selectedCountry}
+												selectedPaymentMethod={selectedPaymentMethod}
+												allProducts={allProducts}
 											/>
 										</>
 									)}

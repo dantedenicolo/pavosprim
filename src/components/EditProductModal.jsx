@@ -101,7 +101,7 @@ export default function EditSellProductModal({
 					products.find((product) => product.id === selectedProductID)
 						.category === "combos"
 						? discount
-							? Number(discount.replace("%", "").trim())
+							? Number(discount?.replace("%", "").trim())
 							: null
 						: null,
 				price: Number(price),

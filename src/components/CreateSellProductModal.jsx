@@ -71,7 +71,7 @@ export default function CreateSellProductModal({ isOpen, onOpenChange }) {
 			name: products.find((product) => product.id === selectedProductID).name,
 			category: products.find((product) => product.id === selectedProductID)
 				.category,
-			discount: discount ? Number(discount.replace("%", "").trim()) : null,
+			discount: discount ? Number(discount?.replace("%", "").trim()) : null,
 			price: Number(price),
 			storeType: selectedStoreType,
 			currency: storeTypes.find(
