@@ -211,7 +211,7 @@ export default function ItemShop({
 								/>
 								{item.firstReleaseDate === item.currentShopDate && (
 									<div className="absolute top-0 right-0 bg-yellow-400 text-black text-sm font-bold px-1 rounded-bl-md max-md:text-xs z-50">
-										Nuevo
+										Primera vez en la tienda!
 									</div>
 								)}
 								{item.isInRotation && (
