@@ -72,10 +72,6 @@ export default function Work() {
 	}, [storeSells]);
 
 	useEffect(() => {
-		console.log(sells);
-	}, [sells]);
-
-	useEffect(() => {
 		if (user === null) {
 			redirect("/login");
 		} else if (user && user.approvalStatus !== "approved") {

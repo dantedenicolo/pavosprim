@@ -138,6 +138,35 @@ export default function Store({ type, currencyURL }) {
 		return () => unsubscribe && unsubscribe();
 	}, []);
 
+	const [pricesCorrected, setPricesCorrected] = useState(false);
+
+	useEffect(
+		() => {
+			if (
+				selectedCurrency === "USD" &&
+				selectedPaymentMethod === "PayPal" &&
+				products &&
+				pricesCorrected === false
+			) {
+				setProducts(
+					products.map((product) => {
+						return {
+							...product,
+							price: product.name.includes("5000")
+								? product.price - 0.5
+								: product.name.includes("13500")
+								? product.price - 1
+								: product.price,
+						};
+					})
+				);
+				setPricesCorrected(true);
+			}
+		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[selectedCurrency, selectedPaymentMethod, products, pricesCorrected]
+	);
+
 	useEffect(() => {
 		axios
 			.get(
@@ -151,7 +180,6 @@ export default function Store({ type, currencyURL }) {
 			)
 			.then((res) => {
 				const currentShopDate = res.data.lastUpdate.date.split(" ")[0];
-				console.log(currentShopDate);
 				const allItems = res.data.shop.filter(
 					(item) =>
 						item.giftAllowed &&
@@ -275,6 +303,7 @@ export default function Store({ type, currencyURL }) {
 						setSelectedCurrency={setSelectedCurrency}
 						setSelectedPaymentMethod={setSelectedPaymentMethod}
 						setProducts={setProducts}
+						setPricesCorrected={setPricesCorrected}
 					/>
 				)}
 

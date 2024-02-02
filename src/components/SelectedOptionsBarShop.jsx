@@ -8,6 +8,7 @@ export default function SelectedOptionsBarShop({
 	setSelectedCurrency,
 	setSelectedPaymentMethod,
 	setProducts,
+	setPricesCorrected,
 }) {
 	return (
 		<>
@@ -19,6 +20,7 @@ export default function SelectedOptionsBarShop({
 						onClick={() => {
 							setSelectedCountry(null);
 							setProducts(null);
+							setPricesCorrected(false);
 						}}
 						color="secondary"
 					>
@@ -32,6 +34,7 @@ export default function SelectedOptionsBarShop({
 						onClick={() => {
 							setSelectedCurrency(null);
 							setProducts(null);
+							setPricesCorrected(false);
 						}}
 						color="secondary"
 					>
@@ -47,6 +50,7 @@ export default function SelectedOptionsBarShop({
 							setSelectedCurrency(null);
 							setSelectedCountry(null);
 							setProducts(null);
+							setPricesCorrected(false);
 						}}
 						color="secondary"
 					>

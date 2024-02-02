@@ -30,7 +30,6 @@ export default function FreeVbucksModal({ isOpen, onOpenChange }) {
 			// remove @ from instagram username
 			instagram.replace("@", "").trim().toLowerCase()
 		);
-		console.log(res);
 		if (res.error) {
 			setError(res.errorCode);
 			setCode(res.discountCode);

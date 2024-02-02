@@ -30,7 +30,7 @@ export const paymentMethods = [
 	},
 	{
 		currency: "USD",
-		methods: ["DolarApp", "Binance"],
+		methods: ["DolarApp", "Binance", "PayPal"],
 		paywall: "Instagram USD",
 	},
 	{

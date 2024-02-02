@@ -78,10 +78,6 @@ export default function Precios() {
 		setLoading(false);
 	};
 
-	useEffect(() => {
-		console.log(selectedCountry, selectedAmount);
-	}, [selectedCountry, selectedAmount]);
-
 	return (
 		<main className="flex flex-col items-center justify-center h-[100svh]">
 			<h1 className="text-4xl font-bold mt-2 max-md:text-3xl text-center">
