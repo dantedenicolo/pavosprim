@@ -209,9 +209,7 @@ export default function ItemShop({
 											: `url(${item.background})`,
 									}}
 								/>
-								{item.firstReleaseDate ===
-									// if equal to today (format yyyy-mm-dd (new item)
-									new Date().toLocaleDateString("en-CA") && (
+								{item.firstReleaseDate === item.currentShopDate && (
 									<div className="absolute top-0 right-0 bg-yellow-400 text-black text-md font-bold px-1 rounded-bl-md max-md:text-sm z-50">
 										Nuevo
 									</div>

@@ -150,6 +150,8 @@ export default function Store({ type, currencyURL }) {
 				}
 			)
 			.then((res) => {
+				const currentShopDate = res.data.lastUpdate.date.split(" ")[0];
+				console.log(currentShopDate);
 				const allItems = res.data.shop.filter(
 					(item) =>
 						item.giftAllowed &&
@@ -203,6 +205,7 @@ export default function Store({ type, currencyURL }) {
 						actualDate: new Date(),
 						rarity: item.rarity.id,
 						firstReleaseDate: item.firstReleaseDate,
+						currentShopDate: currentShopDate,
 					};
 				});
 				setItemShop(itemsMapped);
