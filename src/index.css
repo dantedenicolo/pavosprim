@@ -60,3 +60,35 @@ body {
 		opacity: 1;
 	}
 }
+
+@keyframes gradient {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 100% 0;
+	}
+}
+.animate-gradient {
+	background: linear-gradient(
+		90deg,
+		rgb(162, 87, 224),
+		rgb(241, 132, 150),
+		rgb(162, 87, 224),
+		rgb(241, 132, 150)
+	);
+	background-size: 300% 100%;
+	animation: gradient 2s linear infinite;
+}
+
+.animate-gradient-2 {
+	background: linear-gradient(
+		90deg,
+		rgb(255, 0, 0),
+		rgb(255, 153, 0),
+		rgb(255, 0, 0),
+		rgb(255, 153, 0)
+	);
+	background-size: 300% 100%;
+	animation: gradient 2s linear infinite;
+}

@@ -210,8 +210,28 @@ export default function ItemShop({
 									}}
 								/>
 								{item.firstReleaseDate === item.currentShopDate && (
-									<div className="absolute top-0 right-0 bg-yellow-400 text-black text-md font-bold px-1 rounded-bl-md max-md:text-sm z-50">
+									<div className="absolute top-0 right-0 bg-yellow-400 text-black text-sm font-bold px-1 rounded-bl-md max-md:text-xs z-50">
 										Nuevo
+									</div>
+								)}
+								{item.isInRotation && (
+									<div
+										className={
+											"absolute top-0 right-0 text-black text-sm font-bold px-1 rounded-bl-md max-md:text-xs z-50 " +
+											(item.daysSincePreviousRelease < 30
+												? "bg-green-400"
+												: item.daysSincePreviousRelease < 60
+												? "bg-yellow-400"
+												: item.daysSincePreviousRelease < 120
+												? "bg-orange-400"
+												: item.daysSincePreviousRelease < 300
+												? "bg-red-400"
+												: item.daysSincePreviousRelease < 360
+												? "animate-gradient"
+												: "animate-gradient-2")
+										}
+									>
+										Volvió después de {item.daysSincePreviousRelease} días
 									</div>
 								)}
 								<div className="relative">

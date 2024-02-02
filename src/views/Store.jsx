@@ -186,6 +186,7 @@ export default function Store({ type, currencyURL }) {
 							item.price.finalPrice === 2900 ||
 							item.price.finalPrice === 3000)
 				);
+
 				const itemsMapped = allItems.map((item) => {
 					return {
 						id: item.mainId,
@@ -206,6 +207,22 @@ export default function Store({ type, currencyURL }) {
 						rarity: item.rarity.id,
 						firstReleaseDate: item.firstReleaseDate,
 						currentShopDate: currentShopDate,
+						isInRotation:
+							item.previousReleaseDate !==
+								// currentShopDate minus 1 day
+								new Date(
+									new Date(currentShopDate).getTime() - 24 * 60 * 60 * 1000
+								)
+									.toISOString()
+									.split("T")[0] && item.firstReleaseDate !== currentShopDate,
+						daysSincePreviousRelease:
+							(item.previousReleaseDate &&
+								Math.floor(
+									(new Date(currentShopDate).getTime() -
+										new Date(item.previousReleaseDate).getTime()) /
+										(1000 * 60 * 60 * 24)
+								)) ||
+							0,
 					};
 				});
 				setItemShop(itemsMapped);
