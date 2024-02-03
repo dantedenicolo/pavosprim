@@ -408,3 +408,19 @@ export const claimCode = async (code, instagram) => {
 		error: false,
 	};
 };
+
+export const getPavosPrimStatus = async (cb) => {
+	return db.collection("status").onSnapshot((snapshot) => {
+		const data = snapshot.docs.map((doc) => ({
+			id: doc.id,
+			...doc.data(),
+		}));
+		cb(data);
+	});
+};
+
+export const updatePavosPrimStatus = async (arrayofstatuses) => {
+	arrayofstatuses.forEach(async (status) => {
+		await db.collection("status").doc(status.id).update(status);
+	});
+};

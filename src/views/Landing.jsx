@@ -76,6 +76,12 @@ export default function Landing() {
 					</p>
 				</div>
 			</div>
+			<a
+				href="https://status.pavosprim.com"
+				className="text-purple-500 mt-5 underline hover:text-purple-600 transition-all ease-in-out duration-150"
+			>
+				Ver estados de los servicios
+			</a>
 			{/* footer */}
 			<Footer />
 		</main>

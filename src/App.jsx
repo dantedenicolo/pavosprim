@@ -8,6 +8,7 @@ import {
 	// Work,
 	Products,
 	NotFound,
+	Status,
 } from "./views";
 import "animate.css";
 
@@ -66,6 +67,7 @@ function App() {
 				<Route path="/staff/login" element={<Login />} />
 				{/* <Route path="/staff/work" element={<Work />} /> */}
 				<Route path="/staff/products" element={<Products />} />
+				<Route path="/staff/status" element={<Status />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 			{/* <WelcomeModal isOpen={isOpen} onOpenChange={onOpenChange} /> */}

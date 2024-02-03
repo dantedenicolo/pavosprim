@@ -102,7 +102,7 @@ export default function Products() {
 
 	useEffect(() => {
 		if (user === null) {
-			redirect("/login");
+			redirect("/staff/login");
 		} else if (user && user?.approvalStatus !== "approved") {
 			redirect("/staff");
 		} else if (
