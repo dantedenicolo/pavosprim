@@ -204,7 +204,7 @@ export default function ItemShop({
 										backgroundPosition: "center",
 										// if no background image, make a gradient
 										background: !item.background
-											? posibleGradientColors[item.rarity.toLowerCase()] ||
+											? posibleGradientColors[item?.rarity?.toLowerCase()] ||
 											  posibleGradientColors["other"]
 											: `url(${item.background})`,
 									}}

@@ -215,44 +215,49 @@ export default function Store({ type, currencyURL }) {
 							item.price.finalPrice === 3000)
 				);
 
-				const itemsMapped = allItems.map((item) => {
-					return {
-						id: item.mainId,
-						displayName: item.displayName,
-						price:
-							selectedCurrency === "MXN"
-								? itemPricesMXN.find(
-										(price) => price.itemShopPrice === item.price.finalPrice
-								  )?.price
-								: itemPrices.find(
-										(price) => price.itemShopPrice === item.price.finalPrice
-								  )?.price,
-						image: item.displayAssets[0]?.url,
-						images: item.displayAssets.map((image) => image.url),
-						background: item.displayAssets[0]?.background_texture,
-						giftAllowed: item.giftAllowed,
-						actualDate: new Date(),
-						rarity: item.rarity.id,
-						firstReleaseDate: item.firstReleaseDate,
-						currentShopDate: currentShopDate,
-						isInRotation:
-							item.previousReleaseDate !==
-								// currentShopDate minus 1 day
-								new Date(
-									new Date(currentShopDate).getTime() - 24 * 60 * 60 * 1000
-								)
-									.toISOString()
-									.split("T")[0] && item.firstReleaseDate !== currentShopDate,
-						daysSincePreviousRelease:
-							(item.previousReleaseDate &&
-								Math.floor(
-									(new Date(currentShopDate).getTime() -
-										new Date(item.previousReleaseDate).getTime()) /
-										(1000 * 60 * 60 * 24)
-								)) ||
-							0,
-					};
-				});
+				const itemsMapped = allItems
+					.filter((item) => item?.displayName !== null)
+					.map((item) => {
+						return {
+							id: item?.mainId,
+							displayName: item?.displayName,
+							price:
+								selectedCurrency === "MXN"
+									? itemPricesMXN.find(
+											(price) =>
+												price?.itemShopPrice === item?.price?.finalPrice
+									  )?.price
+									: itemPrices.find(
+											(price) =>
+												price?.itemShopPrice === item?.price?.finalPrice
+									  )?.price,
+							image: item?.displayAssets[0]?.url,
+							images: item?.displayAssets.map((image) => image?.url),
+							background: item?.displayAssets[0]?.background_texture,
+							giftAllowed: item?.giftAllowed,
+							actualDate: new Date(),
+							rarity: item?.rarity?.id,
+							firstReleaseDate: item?.firstReleaseDate,
+							currentShopDate: currentShopDate,
+							isInRotation:
+								item?.previousReleaseDate !==
+									// currentShopDate minus 1 day
+									new Date(
+										new Date(currentShopDate).getTime() - 24 * 60 * 60 * 1000
+									)
+										.toISOString()
+										.split("T")[0] &&
+								item?.firstReleaseDate !== currentShopDate,
+							daysSincePreviousRelease:
+								(item?.previousReleaseDate &&
+									Math.floor(
+										(new Date(currentShopDate).getTime() -
+											new Date(item?.previousReleaseDate).getTime()) /
+											(1000 * 60 * 60 * 24)
+									)) ||
+								0,
+						};
+					});
 				setItemShop(itemsMapped);
 			});
 	}, [selectedCurrency]);
