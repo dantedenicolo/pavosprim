@@ -10,7 +10,7 @@ import {
 } from "../components";
 import { useEffect, useState } from "react";
 import { getProductsByStoreType, getAllProducts } from "../firebase/client";
-import { Button, Image, Spinner, useDisclosure } from "@nextui-org/react";
+import { Image, Spinner, useDisclosure } from "@nextui-org/react";
 import { Tabs, Tab } from "@nextui-org/react";
 import axios from "axios";
 import {
@@ -44,8 +44,6 @@ export default function Store({ type, currencyURL }) {
 
 	const [itemShop, setItemShop] = useState(null);
 	const [ready, setReady] = useState(false);
-
-	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
 	useEffect(() => {
 		if (type === "fortnite") {
@@ -166,9 +164,10 @@ export default function Store({ type, currencyURL }) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[selectedCurrency, selectedPaymentMethod, products, pricesCorrected]
 	);
+	const [itemShopDate, setItemShopDate] = useState(null);
 
-	useEffect(() => {
-		axios
+	const getItemShop = async () => {
+		await axios
 			.get(
 				"https://fortniteapi.io/v2/shop?lang=es",
 				// pass auth headers
@@ -259,8 +258,28 @@ export default function Store({ type, currencyURL }) {
 						};
 					});
 				setItemShop(itemsMapped);
+				setItemShopDate(currentShopDate);
 			});
+	};
+	useEffect(() => {
+		if (selectedCurrency) {
+			getItemShop();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectedCurrency]);
+
+	useEffect(() => {
+		if (itemShopDate) {
+			setInterval(() => {
+				const date = new Date().toISOString().split("T")[0];
+				if (date > itemShopDate) {
+					setItemShop(null);
+					getItemShop();
+				}
+			}, 1000);
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [itemShopDate]);
 
 	useEffect(() => {
 		if (type !== "fortnite" && type !== "pavos") {
