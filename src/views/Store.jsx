@@ -239,6 +239,7 @@ export default function Store({ type, currencyURL }) {
 							firstReleaseDate: item?.firstReleaseDate,
 							currentShopDate: currentShopDate,
 							isInRotation:
+								item?.previousReleaseDate !== null &&
 								item?.previousReleaseDate !==
 									// currentShopDate minus 1 day
 									new Date(
