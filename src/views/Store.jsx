@@ -225,11 +225,11 @@ export default function Store({ type, currencyURL }) {
 									? itemPricesMXN.find(
 											(price) =>
 												price?.itemShopPrice === item?.price?.finalPrice
-									  )?.price
+									  )?.price + 20
 									: itemPrices.find(
 											(price) =>
 												price?.itemShopPrice === item?.price?.finalPrice
-									  )?.price,
+									  )?.price + 500,
 							image: item?.displayAssets[0]?.url,
 							images: item?.displayAssets.map((image) => image?.url),
 							background: item?.displayAssets[0]?.background_texture,

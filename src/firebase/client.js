@@ -16,8 +16,16 @@ const firebaseConfig = {
 const db = firebase.firestore();
 
 const mapUserFromFirebaseAuthToUser = (user) => {
-	const { uid, username, email, avatar, createdAt, updatedAt, approvalStatus } =
-		user;
+	const {
+		uid,
+		username,
+		email,
+		avatar,
+		createdAt,
+		updatedAt,
+		approvalStatus,
+		balance,
+	} = user;
 	return {
 		uid,
 		avatar,
@@ -26,6 +34,7 @@ const mapUserFromFirebaseAuthToUser = (user) => {
 		createdAt: createdAt.toDate(),
 		updatedAt: updatedAt.toDate(),
 		approvalStatus,
+		balance,
 	};
 };
 
@@ -105,6 +114,7 @@ export const loginWithGoogle = () => {
 											new Date()
 										),
 										approvalStatus: "pending",
+										balance: 0,
 									});
 								} else {
 									const usernameRandom =
@@ -121,6 +131,7 @@ export const loginWithGoogle = () => {
 											new Date()
 										),
 										approvalStatus: "pending",
+										balance: 0,
 									});
 								}
 							});
