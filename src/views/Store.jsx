@@ -265,6 +265,8 @@ export default function Store({ type, currencyURL }) {
 			});
 	};
 
+	const [selectedTab, setSelectedTab] = useState("pavos");
+
 	useEffect(() => {
 		if (selectedCurrency) {
 			getItemShop(setItemShop, setItemShopDate);
@@ -290,6 +292,7 @@ export default function Store({ type, currencyURL }) {
 			setTimeout(() => {
 				setItemShop(newItemShop);
 				setItemShopDate(newItemShopDate);
+				setSelectedTab("tienda");
 			}, 1000);
 		}
 	}, [newItemShopDate, newItemShop, itemShopDate]);
@@ -391,6 +394,8 @@ export default function Store({ type, currencyURL }) {
 													: []
 											}
 											color="secondary"
+											selectedKey={selectedTab}
+											onSelectionChange={(key) => setSelectedTab(key)}
 										>
 											<Tab key="pavos" title="Pavos y Packs">
 												<Products
