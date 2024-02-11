@@ -43,6 +43,7 @@ export default function Store({ type, currencyURL }) {
 	const [allProducts, setAllProducts] = useState(null);
 
 	const [itemShop, setItemShop] = useState(null);
+	const [newItemShop, setNewItemShop] = useState(null);
 	const [ready, setReady] = useState(false);
 
 	useEffect(() => {
@@ -165,8 +166,9 @@ export default function Store({ type, currencyURL }) {
 		[selectedCurrency, selectedPaymentMethod, products, pricesCorrected]
 	);
 	const [itemShopDate, setItemShopDate] = useState(null);
+	const [newItemShopDate, setNewItemShopDate] = useState(null);
 
-	const getItemShop = async () => {
+	const getItemShop = async (setItemShopFn, setItemShopDateFn) => {
 		await axios
 			.get(
 				"https://fortniteapi.io/v2/shop?lang=es",
@@ -258,13 +260,14 @@ export default function Store({ type, currencyURL }) {
 								0,
 						};
 					});
-				setItemShop(itemsMapped);
-				setItemShopDate(currentShopDate);
+				setItemShopFn(itemsMapped);
+				setItemShopDateFn(currentShopDate);
 			});
 	};
+
 	useEffect(() => {
 		if (selectedCurrency) {
-			getItemShop();
+			getItemShop(setItemShop, setItemShopDate);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selectedCurrency]);
@@ -274,13 +277,22 @@ export default function Store({ type, currencyURL }) {
 			setInterval(() => {
 				const date = new Date().toISOString().split("T")[0];
 				if (date > itemShopDate) {
-					setItemShop(null);
-					getItemShop();
+					getItemShop(setNewItemShop, setNewItemShopDate);
 				}
 			}, 1000);
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [itemShopDate]);
+
+	useEffect(() => {
+		if (newItemShopDate && itemShopDate !== newItemShopDate) {
+			setItemShop(null);
+			setTimeout(() => {
+				setItemShop(newItemShop);
+				setItemShopDate(newItemShopDate);
+			}, 1000);
+		}
+	}, [newItemShopDate, newItemShop, itemShopDate]);
 
 	useEffect(() => {
 		if (type !== "fortnite" && type !== "pavos") {
