@@ -224,14 +224,18 @@ export default function Store({ type, currencyURL }) {
 							displayName: item?.displayName,
 							price:
 								selectedCurrency === "MXN"
-									? itemPricesMXN.find(
-											(price) =>
-												price?.itemShopPrice === item?.price?.finalPrice
-									  )?.price + 20
-									: itemPrices.find(
-											(price) =>
-												price?.itemShopPrice === item?.price?.finalPrice
-									  )?.price + 500,
+									? Math.ceil(
+											itemPricesMXN.find(
+												(price) =>
+													price?.itemShopPrice === item?.price?.finalPrice
+											)?.price * 1.3
+									  )
+									: Math.ceil(
+											itemPrices.find(
+												(price) =>
+													price?.itemShopPrice === item?.price?.finalPrice
+											)?.price * 1.3
+									  ),
 							image: item?.displayAssets[0]?.url,
 							images: item?.displayAssets.map((image) => image?.url),
 							background: item?.displayAssets[0]?.background_texture,
