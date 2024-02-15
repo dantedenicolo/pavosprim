@@ -27,7 +27,7 @@ export default function Landing() {
 	}, []);
 
 	return (
-		<main className="flex h-[100svh] flex-col items-center justify-center dark md:w-[700px] md:-mt-10">
+		<main className="flex h-[100svh] flex-col items-center justify-center dark md:w-[700px] -mt-10">
 			<Image
 				src="/logo.png"
 				width={125}
