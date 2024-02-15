@@ -39,16 +39,44 @@ export default function Landing() {
 			<p className="text-xl mt-2 font-semibold text-center max-md:text-lg max-sm:text-sm max-sm:m-2">
 				La tienda de pavos con mejores precios de todo LATAM.
 			</p>
-			<div className="mt-4 flex flex-row items-center justify-center w-full">
+			<div className="mt-4 flex gap-2 flex-row items-center justify-center w-full max-md:flex-col">
 				<Link to="/tienda" className="self-center">
 					<Button
 						color="secondary"
 						auto
-						className="dark font-semibold text-md max-md:text-sm"
+						className="dark font-semibold text-md max-md:text-sm max-md:w-[350px]"
 					>
-						Ir a la tienda
+						Ir a la tienda online
 					</Button>
 				</Link>
+				<a
+					href="https://www.instagram.com/cuentasprim_/"
+					className="self-center"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<Button
+						color="secondary"
+						auto
+						className="dark font-semibold text-md max-md:text-sm max-md:w-[350px]"
+					>
+						Ir a la nueva cuenta de Instagram
+					</Button>
+				</a>
+				<a
+					to="https://chat.whatsapp.com/DjdCTSQi897HexBPWflyE1"
+					className="self-center"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<Button
+						color="secondary"
+						auto
+						className="dark font-semibold text-md max-md:text-sm max-md:w-[350px]"
+					>
+						Unirse al grupo de WhatsApp
+					</Button>
+				</a>
 			</div>
 			<div className="mt-4 flex flex-row items-center justify-between w-full text-center">
 				<div className="flex flex-col items-center justify-center w-1/3">

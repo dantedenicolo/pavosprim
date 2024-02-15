@@ -32,7 +32,7 @@ export default function BuyModal({
 	};
 
 	const handleBuyInstagram = () => {
-		window.open("https://ig.me/m/pavosprim", "_blank");
+		window.open("https://ig.me/m/cuentasprim_", "_blank");
 	};
 
 	const [copied, setCopied] = useState(false);
