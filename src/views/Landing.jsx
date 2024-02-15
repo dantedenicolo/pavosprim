@@ -64,7 +64,7 @@ export default function Landing() {
 					</Button>
 				</a>
 				<a
-					to="https://chat.whatsapp.com/DjdCTSQi897HexBPWflyE1"
+					href="https://chat.whatsapp.com/DjdCTSQi897HexBPWflyE1"
 					className="self-center"
 					target="_blank"
 					rel="noreferrer"
