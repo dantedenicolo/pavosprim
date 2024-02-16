@@ -50,6 +50,20 @@ export default function Landing() {
 					</Button>
 				</Link>
 				<a
+					href="https://discord.gg/enuhYtECfV"
+					className="self-center"
+					target="_blank"
+					rel="noreferrer"
+				>
+					<Button
+						color="secondary"
+						auto
+						className="dark font-semibold text-md max-md:text-sm max-md:w-[350px]"
+					>
+						Unirse al servidor de discord
+					</Button>
+				</a>
+				<a
 					href="https://www.instagram.com/cuentasprim_/"
 					className="self-center"
 					target="_blank"
@@ -61,20 +75,6 @@ export default function Landing() {
 						className="dark font-semibold text-md max-md:text-sm max-md:w-[350px]"
 					>
 						Ir a la nueva cuenta de Instagram
-					</Button>
-				</a>
-				<a
-					href="https://chat.whatsapp.com/DjdCTSQi897HexBPWflyE1"
-					className="self-center"
-					target="_blank"
-					rel="noreferrer"
-				>
-					<Button
-						color="secondary"
-						auto
-						className="dark font-semibold text-md max-md:text-sm max-md:w-[350px]"
-					>
-						Unirse al grupo de WhatsApp
 					</Button>
 				</a>
 			</div>
