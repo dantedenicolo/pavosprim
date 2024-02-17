@@ -151,11 +151,6 @@ export default function Store({ type, currencyURL }) {
 					products.map((product) => {
 						return {
 							...product,
-							price: product.name.includes("5000")
-								? product.price - 0.5
-								: product.name.includes("13500")
-								? product.price - 1
-								: product.price,
 						};
 					})
 				);
