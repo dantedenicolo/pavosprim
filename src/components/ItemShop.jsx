@@ -6,7 +6,7 @@ import {
 	Input,
 	useDisclosure,
 } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import BuyModal from "./BuyModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -33,29 +33,29 @@ export default function ItemShop({
 		onOpen();
 	};
 
-	useEffect(() => {
-		const intervalIds = [];
+	// useEffect(() => {
+	// 	const intervalIds = [];
 
-		searchedItems.forEach((item) => {
-			let image = document.getElementById(item.id);
-			if (image && item.images.length > 1) {
-				const intervalId = setInterval(() => {
-					let currentImage = image.getAttribute("src");
-					let currentIndex = item.images.indexOf(currentImage);
-					if (currentIndex === item.images.length - 1) {
-						image.setAttribute("src", item.images[0]);
-					} else {
-						image.setAttribute("src", item.images[currentIndex + 1]);
-					}
-				}, 3000);
-				intervalIds.push(intervalId);
-			}
-		});
+	// 	searchedItems.forEach((item) => {
+	// 		let image = document.getElementById(item.id);
+	// 		if (image && item.images.length > 1) {
+	// 			const intervalId = setInterval(() => {
+	// 				let currentImage = image.getAttribute("src");
+	// 				let currentIndex = item.images.indexOf(currentImage);
+	// 				if (currentIndex === item.images.length - 1) {
+	// 					image.setAttribute("src", item.images[0]);
+	// 				} else {
+	// 					image.setAttribute("src", item.images[currentIndex + 1]);
+	// 				}
+	// 			}, 3000);
+	// 			intervalIds.push(intervalId);
+	// 		}
+	// 	});
 
-		return () => {
-			intervalIds.forEach((id) => clearInterval(id));
-		};
-	}, [searchedItems]);
+	// 	return () => {
+	// 		intervalIds.forEach((id) => clearInterval(id));
+	// 	};
+	// }, [searchedItems]);
 
 	const posibleGradientColors = {
 		uncommon: "linear-gradient(135deg, #197c05 0%, #00d800 100%)",

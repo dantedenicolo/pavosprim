@@ -63,20 +63,6 @@ export default function Landing() {
 						Unirse al servidor de discord
 					</Button>
 				</a>
-				<a
-					href="https://www.instagram.com/cuentasprim_/"
-					className="self-center"
-					target="_blank"
-					rel="noreferrer"
-				>
-					<Button
-						color="secondary"
-						auto
-						className="dark font-semibold text-md max-md:text-sm max-md:w-[350px]"
-					>
-						Ir a la nueva cuenta de Instagram
-					</Button>
-				</a>
 			</div>
 			<div className="mt-4 flex flex-row items-center justify-between w-full text-center">
 				<div className="flex flex-col items-center justify-center w-1/3">
