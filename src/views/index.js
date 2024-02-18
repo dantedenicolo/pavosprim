@@ -7,6 +7,7 @@ import Work from "./staff/Work";
 import Status from "./staff/Status";
 import Products from "./staff/Products";
 import NotFound from "./NotFound";
+import Redirect from "./Redirect";
 
 export {
 	Landing,
@@ -18,4 +19,5 @@ export {
 	Products,
 	NotFound,
 	Status,
+	Redirect,
 };

@@ -9,6 +9,7 @@ import {
 	Products,
 	NotFound,
 	Status,
+	Redirect,
 } from "./views";
 import "animate.css";
 
@@ -69,6 +70,22 @@ function App() {
 				<Route path="/staff/products" element={<Products />} />
 				<Route path="/staff/status" element={<Status />} />
 				<Route path="*" element={<NotFound />} />
+				<Route
+					path="/discord"
+					element={<Redirect url="https://discord.gg/enuhYtECfV" />}
+				/>
+				<Route
+					path="/ds"
+					element={<Redirect url="https://discord.gg/enuhYtECfV" />}
+				/>
+				<Route
+					path="/instagram"
+					element={<Redirect url="https://www.instagram.com/cuentasprim_/" />}
+				/>
+				<Route
+					path="/ig"
+					element={<Redirect url="https://www.instagram.com/cuentasprim_/" />}
+				/>
 			</Routes>
 			{/* <WelcomeModal isOpen={isOpen} onOpenChange={onOpenChange} /> */}
 		</main>
