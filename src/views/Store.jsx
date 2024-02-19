@@ -223,13 +223,17 @@ export default function Store({ type, currencyURL }) {
 											itemPricesMXN.find(
 												(price) =>
 													price?.itemShopPrice === item?.price?.finalPrice
-											)?.price * 1.2
+											)?.price *
+												1.3 *
+												0.9
 									  )
 									: Math.ceil(
 											itemPrices.find(
 												(price) =>
 													price?.itemShopPrice === item?.price?.finalPrice
-											)?.price * 1.2
+											)?.price *
+												1.3 *
+												0.9
 									  ),
 							image: item?.displayAssets.filter(
 								(asset) => asset?.primaryMode !== "Juno"
