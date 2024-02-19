@@ -210,7 +210,7 @@ export default function ItemShop({
 												: `url(${item.background})`,
 										}}
 									/>
-									<div className="absolute bottom-0 left-0 bg-red-600 rounded-tr-md px-1  text-sm font-bold max-md:text-xs z-50">
+									<div className="absolute bottom-0 left-0 bg-red-600 rounded-tr-md px-1  text-md font-bold max-md:text-sm z-50">
 										10% OFF
 									</div>
 								</div>
