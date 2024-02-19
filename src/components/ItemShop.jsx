@@ -176,39 +176,44 @@ export default function ItemShop({
 						>
 							<CardBody className="overflow-visible p-0">
 								{/* rotating image with all item.images */}
-								<img
-									radius="lg"
-									alt={item.displayName}
-									className="w-full max-sm:h-[200px] h-[277px] rounded-top-md object-cover"
-									src={item?.images[0] || "/no-image.png"}
-									id={item.id}
-									onClick={() =>
-										handleOpenBuyModal({
-											id: item.id,
-											displayName: item.displayName,
-											images: item.images,
+								<div className="relative">
+									<img
+										radius="lg"
+										alt={item.displayName}
+										className="w-full max-sm:h-[200px] h-[277px] rounded-top-md object-cover"
+										src={item?.images[0] || "/no-image.png"}
+										id={item.id}
+										onClick={() =>
+											handleOpenBuyModal({
+												id: item.id,
+												displayName: item.displayName,
+												images: item.images,
 
-											price:
-												selectedCountry === "Argentina"
-													? selectedPaymentMethod.toLowerCase() === "efectivo"
-														? item.price + 200
-														: item.price
-													: item.price,
-										})
-									}
-									style={{
-										backgroundImage: item.background
-											? `url(${item.background})`
-											: null,
-										backgroundSize: "cover",
-										backgroundPosition: "center",
-										// if no background image, make a gradient
-										background: !item.background
-											? posibleGradientColors[item?.rarity?.toLowerCase()] ||
-											  posibleGradientColors["other"]
-											: `url(${item.background})`,
-									}}
-								/>
+												price:
+													selectedCountry === "Argentina"
+														? selectedPaymentMethod.toLowerCase() === "efectivo"
+															? item.price + 200
+															: item.price
+														: item.price,
+											})
+										}
+										style={{
+											backgroundImage: item.background
+												? `url(${item.background})`
+												: null,
+											backgroundSize: "cover",
+											backgroundPosition: "center",
+											// if no background image, make a gradient
+											background: !item.background
+												? posibleGradientColors[item?.rarity?.toLowerCase()] ||
+												  posibleGradientColors["other"]
+												: `url(${item.background})`,
+										}}
+									/>
+									<div className="absolute bottom-0 left-0 bg-red-600 rounded-tr-md px-1  text-sm font-bold max-md:text-xs z-50">
+										10% OFF
+									</div>
+								</div>
 								{item.firstReleaseDate === item.currentShopDate && (
 									<div className="absolute top-0 right-0 bg-yellow-400 text-black text-sm font-bold px-1 rounded-bl-md max-md:text-xs z-50">
 										Primera vez en la tienda!

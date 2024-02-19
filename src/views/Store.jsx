@@ -229,7 +229,9 @@ export default function Store({ type, currencyURL }) {
 											itemPrices.find(
 												(price) =>
 													price?.itemShopPrice === item?.price?.finalPrice
-											)?.price * 1.3
+											)?.price *
+												1.3 *
+												0.9
 									  ),
 							image: item?.displayAssets.filter(
 								(asset) => asset?.primaryMode !== "Juno"
