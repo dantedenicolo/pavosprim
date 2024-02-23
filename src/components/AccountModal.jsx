@@ -191,6 +191,7 @@ export default function AccountModal({
 													onValueChange={setWantToContinue}
 													className="dark"
 													orientation="horizontal"
+													color="secondary"
 												>
 													<Radio value={true}>Sí</Radio>
 													<Radio value={false}>No</Radio>
@@ -208,6 +209,7 @@ export default function AccountModal({
 															onValueChange={setHasXboxAccount}
 															className="dark"
 															orientation="horizontal"
+															color="secondary"
 														>
 															<Radio value={true}>Sí</Radio>
 															<Radio value={false}>No</Radio>
