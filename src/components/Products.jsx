@@ -1,5 +1,5 @@
 import { Card, CardBody, CardFooter, useDisclosure } from "@nextui-org/react";
-import BuyModal from "./BuyModal";
+import AccountModal from "./AccountModal";
 import { useState } from "react";
 import { Input } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,7 +17,7 @@ export default function Products({
 	const [searchedProducts, setSearchedProducts] = useState(products);
 	const [searchBar, setSearchBar] = useState("");
 
-	const handleOpenBuyModal = (product) => {
+	const handleOpenAccountModal = (product) => {
 		setSelectedProduct(product);
 		onOpen();
 	};
@@ -96,7 +96,7 @@ export default function Products({
 									"w-52 h-[330px] animate__animated animate__zoomIn animate__fast max-sm:w-44 max-sm:h-[250px]"
 								}
 								onPress={() =>
-									handleOpenBuyModal({
+									handleOpenAccountModal({
 										...product,
 										price:
 											selectedCountry === "Argentina"
@@ -161,7 +161,7 @@ export default function Products({
 						</div>
 					))}
 			</div>
-			<BuyModal
+			<AccountModal
 				isOpen={isOpen}
 				onOpenChange={onOpenChange}
 				item={selectedProduct}

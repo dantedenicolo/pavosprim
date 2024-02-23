@@ -19,6 +19,7 @@ import Footer from "./Footer";
 import MonedaLocalModal from "./MonedaLocalModal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
 import EditSellProductModal from "./EditProductModal";
+import AccountModal from "./AccountModal";
 
 export {
 	ListaVentas,
@@ -42,4 +43,5 @@ export {
 	MonedaLocalModal,
 	ConfirmDeleteModal,
 	EditSellProductModal,
+	AccountModal,
 };
