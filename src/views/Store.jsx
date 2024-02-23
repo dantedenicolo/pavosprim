@@ -176,40 +176,51 @@ export default function Store({ type, currencyURL }) {
 			)
 			.then((res) => {
 				const currentShopDate = res.data.lastUpdate.date.split(" ")[0];
-				const allItems = res.data.shop.filter(
-					(item) =>
-						item.giftAllowed &&
-						// item.price.finalPrice === 100 ||
-						(item.price.finalPrice === 200 ||
-							item.price.finalPrice === 300 ||
-							item.price.finalPrice === 400 ||
-							item.price.finalPrice === 500 ||
-							item.price.finalPrice === 600 ||
-							item.price.finalPrice === 700 ||
-							item.price.finalPrice === 800 ||
-							item.price.finalPrice === 900 ||
-							item.price.finalPrice === 1000 ||
-							item.price.finalPrice === 1100 ||
-							item.price.finalPrice === 1200 ||
-							item.price.finalPrice === 1300 ||
-							item.price.finalPrice === 1400 ||
-							item.price.finalPrice === 1500 ||
-							item.price.finalPrice === 1600 ||
-							item.price.finalPrice === 1700 ||
-							item.price.finalPrice === 1800 ||
-							item.price.finalPrice === 1900 ||
-							item.price.finalPrice === 2000 ||
-							item.price.finalPrice === 2100 ||
-							item.price.finalPrice === 2200 ||
-							item.price.finalPrice === 2300 ||
-							item.price.finalPrice === 2400 ||
-							item.price.finalPrice === 2500 ||
-							item.price.finalPrice === 2600 ||
-							item.price.finalPrice === 2700 ||
-							item.price.finalPrice === 2800 ||
-							item.price.finalPrice === 2900 ||
-							item.price.finalPrice === 3000)
-				);
+				const allItems = res.data.shop
+					.filter(
+						(item) =>
+							item.giftAllowed &&
+							// item.price.finalPrice === 100 ||
+							(item.price.finalPrice === 200 ||
+								item.price.finalPrice === 300 ||
+								item.price.finalPrice === 400 ||
+								item.price.finalPrice === 500 ||
+								item.price.finalPrice === 600 ||
+								item.price.finalPrice === 700 ||
+								item.price.finalPrice === 800 ||
+								item.price.finalPrice === 900 ||
+								item.price.finalPrice === 1000 ||
+								item.price.finalPrice === 1100 ||
+								item.price.finalPrice === 1200 ||
+								item.price.finalPrice === 1300 ||
+								item.price.finalPrice === 1400 ||
+								item.price.finalPrice === 1500 ||
+								item.price.finalPrice === 1600 ||
+								item.price.finalPrice === 1700 ||
+								item.price.finalPrice === 1800 ||
+								item.price.finalPrice === 1900 ||
+								item.price.finalPrice === 2000 ||
+								item.price.finalPrice === 2100 ||
+								item.price.finalPrice === 2200 ||
+								item.price.finalPrice === 2300 ||
+								item.price.finalPrice === 2400 ||
+								item.price.finalPrice === 2500 ||
+								item.price.finalPrice === 2600 ||
+								item.price.finalPrice === 2700 ||
+								item.price.finalPrice === 2800 ||
+								item.price.finalPrice === 2900 ||
+								item.price.finalPrice === 3000)
+					)
+					// filter duplicates
+					.filter(
+						(item, index, self) =>
+							index ===
+							self.findIndex(
+								(t) =>
+									t.displayName === item.displayName &&
+									t.price.finalPrice === item.price.finalPrice
+							)
+					);
 
 				const itemsMapped = allItems
 					.filter((item) => item?.displayName !== null)
