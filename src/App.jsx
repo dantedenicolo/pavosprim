@@ -31,7 +31,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Landing />} />
 				<Route path="/tienda" element={<Store />} />
-				<Route
+				{/* <Route
 					path="/tienda/pavos"
 					element={<Store type="pavos" currencyURL="ARS" />}
 				/>
@@ -50,7 +50,7 @@ function App() {
 				<Route
 					path="/tienda/pavos/GLOBAL"
 					element={<Store type="pavos" currencyURL="GLOBAL" />}
-				/>
+				/> */}
 				<Route
 					path="/tienda/fortnite"
 					element={<Store type="fortnite" currencyURL="ARS" />}
