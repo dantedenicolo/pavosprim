@@ -210,9 +210,6 @@ export default function ItemShop({
 												: `url(${item.background})`,
 										}}
 									/>
-									<div className="absolute bottom-0 left-0 bg-red-600 rounded-tr-md px-1  text-md font-bold max-md:text-sm z-50">
-										10% OFF
-									</div>
 								</div>
 								{item.firstReleaseDate === item.currentShopDate && (
 									<div className="absolute top-0 right-0 bg-yellow-400 text-black text-sm font-bold px-1 rounded-bl-md max-md:text-xs z-50">
