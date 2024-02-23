@@ -195,7 +195,7 @@ export default function AccountModal({
 											<>
 												{platform !== "Xbox" && (
 													<>
-														<p>¿Tenés cuenta de Xbox?</p>
+														<p>¿Tenés cuenta de Xbox vinculada?</p>
 														<RadioGroup
 															value={hasXboxAccount}
 															onValueChange={setHasXboxAccount}
