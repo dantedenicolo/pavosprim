@@ -231,7 +231,7 @@ export default function AccountModal({
 													{hasXboxAccount ? "Xbox" : platform}:
 												</p>
 												<Input
-													type="password"
+													type="text"
 													placeholder="Contraseña"
 													value={password}
 													onValueChange={setPassword}
