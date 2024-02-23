@@ -67,7 +67,14 @@ export default function AccountModal({
 		const hasXboxAccount = localStorage.getItem("hasXboxAccount");
 		const wantToContinue = localStorage.getItem("wantToContinue");
 		const generatedMessage = localStorage.getItem("generatedMessage");
-		if (platform && email && password && hasXboxAccount !== null) {
+		if (
+			platform &&
+			email &&
+			password &&
+			hasXboxAccount !== null &&
+			wantToContinue !== null &&
+			generatedMessage !== null
+		) {
 			setPlatform(platform);
 			setEmail(email);
 			setPassword(password);
