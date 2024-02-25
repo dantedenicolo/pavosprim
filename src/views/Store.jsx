@@ -234,13 +234,13 @@ export default function Store({ type, currencyURL }) {
 											itemPricesMXN.find(
 												(price) =>
 													price?.itemShopPrice === item?.price?.finalPrice
-											)?.price * 2.5
+											)?.price * 2
 									  )
 									: Math.ceil(
 											itemPrices.find(
 												(price) =>
 													price?.itemShopPrice === item?.price?.finalPrice
-											)?.price * 2.5
+											)?.price * 2
 									  ),
 							image: item?.displayAssets.filter(
 								(asset) => asset?.primaryMode !== "Juno"
@@ -401,48 +401,49 @@ export default function Store({ type, currencyURL }) {
 								<>
 									{type !== "fortnite" && type !== "pavos" ? (
 										<>
-											{/* <Tabs
-										// 	aria-label="Method"
-										// 	disabledKeys={
-										// 		selectedCurrency !== "ARS" && selectedCurrency !== "MXN"
-										// 			? ["tienda"]
-										// 			: []
-										// 	}
-										// 	color="secondary"
-										// 	selectedKey={selectedTab}
-										// 	onSelectionChange={(key) => setSelectedTab(key)}
-										// > */}
-											{/* <Tab key="pavos" title="Pavos y Packs">
-												<Products
-													products={products}
-													selectedCurrency={selectedCurrency}
-													selectedCountry={selectedCountry}
-													selectedPaymentMethod={selectedPaymentMethod}
-													allProducts={allProducts}
-												/>
-											</Tab> */}
+											<Tabs
+												aria-label="Method"
+												disabledKeys={
+													selectedCurrency !== "ARS" &&
+													selectedCurrency !== "MXN"
+														? ["tienda"]
+														: []
+												}
+												color="secondary"
+												selectedKey={selectedTab}
+												onSelectionChange={(key) => setSelectedTab(key)}
+											>
+												<Tab key="pavos" title="Pavos y Packs">
+													<Products
+														products={products}
+														selectedCurrency={selectedCurrency}
+														selectedCountry={selectedCountry}
+														selectedPaymentMethod={selectedPaymentMethod}
+														allProducts={allProducts}
+													/>
+												</Tab>
 
-											{/* <Tab key="tienda" title="Tienda de Fortnite"> */}
-											{selectedCurrency === "ARS" ||
-											selectedCurrency === "MXN" ? (
-												<ItemShop
-													itemShop={itemShop}
-													selectedCurrency={selectedCurrency}
-													selectedCountry={selectedCountry}
-													selectedPaymentMethod={selectedPaymentMethod}
-												/>
-											) : (
-												<div className="flex flex-col items-center justify-center w-full h-[calc(100vh-350px)]">
-													<p className="text-white text-center mx-5">
-														Actualmente no estamos vendiendo ningún producto en
-														la moneda que seleccionaste.
-													</p>
-												</div>
-											)}
+												<Tab key="tienda" title="Tienda de Fortnite">
+													{selectedCurrency === "ARS" ||
+													selectedCurrency === "MXN" ? (
+														<ItemShop
+															itemShop={itemShop}
+															selectedCurrency={selectedCurrency}
+															selectedCountry={selectedCountry}
+															selectedPaymentMethod={selectedPaymentMethod}
+														/>
+													) : (
+														<div className="flex flex-col items-center justify-center w-full h-[calc(100vh-350px)]">
+															<p className="text-white text-center mx-5">
+																Actualmente no estamos vendiendo ningún producto
+																en la moneda que seleccionaste.
+															</p>
+														</div>
+													)}
+												</Tab>
+											</Tabs>
 										</>
-									) : // 	</Tab>
-									// </Tabs>
-									type === "fortnite" ? (
+									) : type === "fortnite" ? (
 										<>
 											<ItemShop
 												itemShop={itemShop}
